@@ -59,6 +59,7 @@ const BoxThumbnail = styled(Box)`
 const BoxContentPost = styled(Box)`
   color: #ffffff;
   padding: 20px 0;
+  overflow-x: auto;
   img {
     max-width: 100%;
     height: auto;
