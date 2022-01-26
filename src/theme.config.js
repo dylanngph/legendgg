@@ -1,10 +1,4 @@
 import { createTheme } from '@mui/material/styles';
-// import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
-// import purple from '@material-ui/core/colors/purple';
-// import green from '@material-ui/core/colors/green';
-// const breakpoints = createBreakpoints({});
-
-//#B0AEB5
 
 export const themeCustomApp = createTheme({
   palette: {

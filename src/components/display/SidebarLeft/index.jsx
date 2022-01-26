@@ -23,7 +23,7 @@ function SidebarLeft() {
             <item.icon sx={{ color: '#ffffff' }}/>
           </NavLink>
         ))}
-        <div className='animation-wrap'><div className='amimation-module'></div></div>
+        <div className='animation-wrap'></div>
       </BoxNavMenu>
     </WrapperBox>
   )
@@ -33,8 +33,7 @@ function createCSSAnimation() {
   let styles = '';
   for (let i = 0; i < navBar.length; i += 1) {
     styles += `
-      a:nth-child(${i+1}).active ~ .animation-wrap,
-      a:nth-child(${i+1}):not(.actice):hover ~ .animation-wrap {
+      a:nth-child(${i+1}).active ~ .animation-wrap {
         top: ${(heightNavLink*i)+6}px;
         display: block;
       }
@@ -66,27 +65,23 @@ const BoxNavMenu = styled.nav`
     position: relative;
     z-index: 2;
     display: block;
+    svg {
+      opacity: 0.8;
+    }
     &:hover svg,
     &.active svg {
-      color: #C33020;
-      z-index: 2;
+      opacity: 1;
     }
   }
   .animation-wrap {
     position: absolute;
     display: none;
-    left: 23px;
+    left: 24px;
     width: 32px;
     height: 32px;
     background: linear-gradient(to right, red, purple);
     z-index: 1;
     transition: all .5s ease;
-    padding: 1px;
-    border-radius: 5px;
-  }
-  .amimation-module {
-    padding: 16px;
-    background: #080811;
     border-radius: 5px;
   }
   ${createCSSAnimation()};

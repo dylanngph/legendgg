@@ -6,6 +6,7 @@ import HomeScreen from './screens/home';
 import AboutScreen from './screens/about';
 import PostScreen from './screens/post';
 import SettingScreen from './screens/setting';
+import NotFound from './components/display/NotFound';
 import SidebarLeft from './components/display/SidebarLeft';
 import SidebarRight from './components/display/SidebarRight';
 import styled from 'styled-components';
@@ -72,6 +73,7 @@ function App() {
             <Route path="/about" element={<AboutScreen />} />
             <Route path="/setting" element={<SettingScreen />} />
             <Route path="/post/:articleSlug" element={<PostScreen />} />
+            <Route element={<NotFound />} />
           </Routes>
         </BoxMain>
         <BoxRight>

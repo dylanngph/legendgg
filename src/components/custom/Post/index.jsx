@@ -19,10 +19,10 @@ function Post(props) {
           />
           <CardContent>
             <BoxTitle>
-              <Typography variant='h5'>{props.item?.title}</Typography>
+              <Typography variant='h5' sx={{ fontWeight: 'bold' }}>{props.item?.title}</Typography>
             </BoxTitle>
             <BoxExcerpt>
-              <Typography variant="body2">{props.item?.subTitle}</Typography>
+              <Typography variant="body1">{props.item?.subTitle}</Typography>
             </BoxExcerpt>
           </CardContent>
         </Card>
