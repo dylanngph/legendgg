@@ -1,4 +1,6 @@
 import { Box, Typography } from '@mui/material';
+import { NavLink } from 'react-router-dom';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import PropTypes from 'prop-types';
 import { decode } from 'html-entities';
 import styled from 'styled-components';
@@ -31,6 +33,9 @@ function PostDetail(props) {
               <Typography variant='h6'>{`Tags: ${props.post.tags.join(", ")}`}</Typography>
             }
           </BoxFooterPost>
+          <Box sx={{ paddingBottom: '20px', textAlign: 'center', '& a': { color: '#ffffff', fontWeight: 'bold', display: 'flex', justifyContent: 'center', alignItems: 'center' } }}>
+            <NavLink to="/"><ArrowBackIcon />Trở về</NavLink>
+          </Box>
         </>
         :
         <>
@@ -89,6 +94,9 @@ const BoxContentPost = styled(Box)`
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     display: -webkit-box;
+  }
+  a {
+    color: #ffffff;
   }
 `;
 
