@@ -1,6 +1,7 @@
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import ButtonStyle from '../../custom/ButtonStyle';
 import Slider from "react-slick";
+import { NavLink } from 'react-router-dom';
 import { slideBanner, settings } from '../../../constants/data/slidebanner';
 import styled from 'styled-components';
 // import "~slick-carousel/slick/slick.css"; 
@@ -13,13 +14,17 @@ function Banner() {
         {slideBanner.map((slide) => (
           <WapperSlide key={slide.id}>
             <img src={slide.image} alt="img slide" />
-            {(slide.title || slide.subTitle || slide.button) &&
+            {(slide.title || slide.subTitle || slide.buttonTitle) &&
               <Box sx={{ position: 'absolute', top: '50%', left: '10%', transform: 'translateY(-50%)'}}>
-                <Typography variant='h1'>sss</Typography>
-                <Typography variant='h2'>sss</Typography>
-                <Box sx={{ marginTop: '10px'}}>
-                  <ButtonStyle>ssss</ButtonStyle>
-                </Box>
+                {slide.title && <Typography variant='h1'>{slide.title}</Typography>}
+                {slide.subTitle && <Typography variant='h2'>{slide.subTitle}</Typography>}
+                {slide.buttonTitle && 
+                  <Box sx={{ marginTop: '10px'}}>
+                    <ButtonStyle>
+                      <NavLink to={slide.buttonHref}>{slide.buttonTitle}</NavLink>
+                    </ButtonStyle>
+                  </Box>
+                }
               </Box>}
           </WapperSlide>
         ))}
@@ -34,7 +39,7 @@ const BoxSlide = styled(Box)`
     img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center;
     }
     .slick-next {

@@ -31,6 +31,11 @@ const CustomButtonRoot = styled('button')`
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+  & a {
+    color: white;
+    text-decoration: none;
+  }
 `;
 
 function CustomButton(props) {

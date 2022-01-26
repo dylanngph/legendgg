@@ -5,7 +5,8 @@ import { Box } from '@mui/material';
 import styled, { css } from 'styled-components';
 
 const activeClassName = "active";
-const heightNavLink = 48;
+const heightNavLink = 59;
+const heightAnimation = 48;
 
 function SidebarLeft() {
   return (
@@ -20,7 +21,7 @@ function SidebarLeft() {
           <NavLink key={item.title} to={item.href} className={({ isActive }) =>
               isActive ? activeClassName : undefined
             }>
-            <item.icon sx={{ color: '#ffffff' }}/>
+            <item.icon fontSize="large" sx={{ color: '#ffffff' }}/>
           </NavLink>
         ))}
         <div className='animation-wrap'></div>
@@ -34,7 +35,7 @@ function createCSSAnimation() {
   for (let i = 0; i < navBar.length; i += 1) {
     styles += `
       a:nth-child(${i+1}).active ~ .animation-wrap {
-        top: ${(heightNavLink*i)+6}px;
+        top: ${(heightNavLink*i)+4}px;
         display: block;
       }
     `
@@ -76,9 +77,9 @@ const BoxNavMenu = styled.nav`
   .animation-wrap {
     position: absolute;
     display: none;
-    left: 24px;
-    width: 32px;
-    height: 32px;
+    left: ${((100 - heightAnimation) / 2)}px;
+    width: ${heightAnimation}px;
+    height: ${heightAnimation}px;
     background: linear-gradient(to right, red, purple);
     z-index: 1;
     transition: all .5s ease;

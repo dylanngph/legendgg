@@ -11,7 +11,7 @@ import SidebarLeft from './components/display/SidebarLeft';
 import SidebarRight from './components/display/SidebarRight';
 import styled from 'styled-components';
 
-const widthSideLeft = 80;
+const widthSideLeft = 100;
 const widthSideRight = 250;
 
 function App() {
