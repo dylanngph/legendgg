@@ -96,7 +96,7 @@ const BoxLeft = styled(Box)`
 `;
 
 const BoxMain = styled.main`
-  width: calc(100% - ${widthSideLeft + widthSideRight}px);
+  width: calc(100% - ${(widthSideLeft + widthSideRight + 30)}px);
   @media screen and (max-width: 900px) {
     width: 100%;
     padding-top: 50px;
