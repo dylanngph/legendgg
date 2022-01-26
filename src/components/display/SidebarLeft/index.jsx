@@ -78,6 +78,9 @@ const BoxNavMenu = styled.nav`
     position: absolute;
     display: none;
     left: ${((100 - heightAnimation) / 2)}px;
+    @media screen and (max-width: 900px) {
+      left: 17px;
+    }
     width: ${heightAnimation}px;
     height: ${heightAnimation}px;
     background: linear-gradient(to right, red, purple);
