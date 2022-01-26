@@ -39,7 +39,7 @@ function ListPost() {
   };
 
   return (
-    <Container>
+    <Box sx={{margin: '0 20px'}}>
       <WrapperBox>
         <StyledCate>
           {cateList.map((cate) => (
@@ -58,7 +58,7 @@ function ListPost() {
           }
         </Grid>
       </WrapperBox>
-    </Container>
+    </Box>
   )
 }
 
