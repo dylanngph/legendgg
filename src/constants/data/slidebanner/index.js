@@ -1,7 +1,7 @@
 export const slideBanner = [
   {
     id: 1,
-    image: 'images/slide-banner/1cc30d616698abc6f289.jpg',
+    image: 'images/bg.jpg',
     title: '',
     subTitle: '',
     buttonTitle: '',
