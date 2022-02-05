@@ -15,9 +15,20 @@ function Banner() {
           <WapperSlide key={slide.id}>
             <img src={slide.image} alt="img slide" />
             {(slide.title || slide.subTitle || slide.buttonTitle) &&
-              <Box sx={{ position: 'absolute', top: '50%', left: '10%', transform: 'translateY(-50%)'}}>
+              <Box sx={{ 
+                position: 'absolute', 
+                top: '50%', 
+                left: '20px', 
+                transform: 'translateY(-50%)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                gap: '30px',
+                height: '100%',
+                maxWidth: '40vw',
+                }}>
                 {slide.title && <Typography variant='h1'>{slide.title}</Typography>}
-                {slide.subTitle && <Typography variant='h2'>{slide.subTitle}</Typography>}
+                {slide.subTitle && <Typography variant='h5'>{slide.subTitle}</Typography>}
                 {slide.buttonTitle && 
                   <Box sx={{ marginTop: '10px'}}>
                     <ButtonStyle>
@@ -35,12 +46,14 @@ function Banner() {
 
 const BoxSlide = styled(Box)`
   max-width: 100%;
+  padding: 20px;
   .slick-slider {
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: bottom;
+      border-radius: 10px;
     }
     .slick-next {
       right: 10px;
@@ -54,10 +67,10 @@ const BoxSlide = styled(Box)`
 `;
 
 const WapperSlide = styled(Box)`
-  height: 400px;
+  height: 450px;
   position: relative;
   @media screen and (max-width: 900px) {
-    height: 200px;
+    height: 300px;
   }
 `;
 

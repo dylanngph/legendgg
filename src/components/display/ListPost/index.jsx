@@ -63,10 +63,10 @@ function ListPost() {
 }
 
 const WrapperBox = styled(Box)`
-  border: 1px solid #86848a;
-  margin: 15px 0;
-  padding: 15px;
-  border-radius: 5px;
+  // border: 1px solid #86848a;
+  // margin: 15px 0;
+  // padding: 15px;
+  // border-radius: 5px;
 `;
 
 const StyledCate = styled.ul`

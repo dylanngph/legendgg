@@ -13,7 +13,7 @@ function SidebarLeft() {
     <WrapperBox>
       <BoxLogo>
         <NavLink to="/">
-          <img src="/images/logo.svg" alt="logo" />
+          <img src="/logo.png" alt="logo" width="80px" />
         </NavLink>
       </BoxLogo>
       <BoxNavMenu>
@@ -77,7 +77,7 @@ const BoxNavMenu = styled.nav`
   .animation-wrap {
     position: absolute;
     display: none;
-    left: ${((100 - heightAnimation) / 2)}px;
+    left: ${((120 - heightAnimation) / 2)}px;
     @media screen and (max-width: 900px) {
       left: 17px;
     }

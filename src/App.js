@@ -11,7 +11,7 @@ import SidebarLeft from './components/display/SidebarLeft';
 import SidebarRight from './components/display/SidebarRight';
 import styled from 'styled-components';
 
-const widthSideLeft = 100;
+const widthSideLeft = 120;
 const widthSideRight = 250;
 
 function App() {
@@ -91,7 +91,7 @@ const BoxContainer = styled(Box)`
 
 const BoxLeft = styled(Box)`
   width: ${widthSideLeft}px;
-  background-color: #080811;
+  background-color: #0B0B0D;
   @media screen and (max-width: 900px) {
     display: none;
   }
@@ -107,7 +107,7 @@ const BoxMain = styled.main`
 
 const BoxRight = styled(Box)`
   width: ${widthSideRight}px;
-  background-color: #080811;
+  background-color: #0B0B0D;
   padding: 10px 15px;
   @media screen and (max-width: 900px) {
     display: none;
