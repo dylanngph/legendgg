@@ -8,7 +8,7 @@ const activeClassName = "active";
 const heightNavLink = 59;
 const heightAnimation = 48;
 
-function SidebarLeft() {
+function SidebarLeft({widthSideLeft}) {
   return (
     <WrapperBox>
       <BoxLogo>
@@ -21,7 +21,13 @@ function SidebarLeft() {
           <NavLink key={item.title} to={item.href} className={({ isActive }) =>
               isActive ? activeClassName : undefined
             }>
-            <item.icon fontSize="large" sx={{ color: '#ffffff' }}/>
+              <MenuItems>
+                <item.icon fontSize="large"/>
+                <Box>
+                  {item.title}
+                </Box>
+              </MenuItems>
+            
           </NavLink>
         ))}
         <div className='animation-wrap'></div>
@@ -35,7 +41,7 @@ function createCSSAnimation() {
   for (let i = 0; i < navBar.length; i += 1) {
     styles += `
       a:nth-child(${i+1}).active ~ .animation-wrap {
-        top: ${(heightNavLink*i)+4}px;
+        top: ${((heightNavLink+23)*i)+4}px;
         display: block;
       }
     `
@@ -55,19 +61,35 @@ const BoxLogo = styled(Box)`
   padding: 10px 0;
 `;
 
+const MenuItems = styled(Box)`
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`
+
 const BoxNavMenu = styled.nav`
   list-style: none;
   margin: 0;
   padding: 0;
   position: relative;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   a {
-    padding: 10px 15px;
-    text-align: center;
+    padding: 20px 10px 10px 30px;
+    // text-align: center;
     position: relative;
     z-index: 2;
     display: block;
+    text-decoration: none;
+    // font-size: 18px;
+    font-weight: 700;
     svg {
       opacity: 0.8;
+      width: 35px;
+      fill: #fff;
     }
     &:hover svg,
     &.active svg {
@@ -77,12 +99,12 @@ const BoxNavMenu = styled.nav`
   .animation-wrap {
     position: absolute;
     display: none;
-    left: ${((120 - heightAnimation) / 2)}px;
+    // left: ${((250 - heightAnimation) / 2)}px;
     @media screen and (max-width: 900px) {
       left: 17px;
     }
-    width: ${heightAnimation}px;
-    height: ${heightAnimation}px;
+    width: 250px;
+    height: ${heightAnimation+20}px;
     background: linear-gradient(to right, red, purple);
     z-index: 1;
     transition: all .5s ease;

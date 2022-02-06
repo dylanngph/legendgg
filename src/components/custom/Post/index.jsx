@@ -11,7 +11,16 @@ function Post(props) {
   return (
     <Grid item xs={12} sm={6} md={4}>
       <NavLink to={`post/${props.item.slug}`} style={{ textDecoration: 'none' }}>
-        <Card sx={{ height: '100%', backgroundColor: 'rgba(255, 255, 255, .05)', cursor: 'pointer' }}>
+        <Card sx={{ 
+          height: '100%', 
+          backgroundColor: 'rgba(255, 255, 255, .07)', 
+          cursor: 'pointer',
+          ':hover' : {
+            transform: 'translateY(-10px)',
+            transition: '0.2s ease-out'
+          }
+          }}
+          >
           <CardMedia
             component="img"
             height="150"
@@ -52,9 +61,7 @@ const BoxTitle = styled(Box)`
   -webkit-box-orient: vertical;
   display: -webkit-box;
   margin-bottom: 10px;
-  h5:hover {
-    color: #C33020;
-  }
+  
 `;
 
 

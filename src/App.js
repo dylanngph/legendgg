@@ -11,7 +11,7 @@ import SidebarLeft from './components/display/SidebarLeft';
 import SidebarRight from './components/display/SidebarRight';
 import styled from 'styled-components';
 
-const widthSideLeft = 120;
+const widthSideLeft = 250;
 const widthSideRight = 250;
 
 function App() {
@@ -33,12 +33,12 @@ function App() {
 
   const list = (anchor) => (
     <Box
-      sx={{ backgroundColor: '#080811', height: '100%', color: '#fff' }}
+      sx={{ backgroundColor: '#000', height: '100%', color: '#fff' }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      {anchor === 'left' ? <Box sx={{ width: '80px' }}><SidebarLeft /></Box> : <Box sx={{ width: '200px', padding: '15px' }}><SidebarRight /></Box>}
+      {anchor === 'left' ? <Box sx={{ width: '285px' }}><SidebarLeft /></Box> : <Box sx={{ width: '200px', padding: '15px' }}><SidebarRight /></Box>}
     </Box>
   );
 
@@ -46,7 +46,7 @@ function App() {
     <BrowserRouter>
       <BoxContainer>
         <BoxLeft>
-          <SidebarLeft />
+          <SidebarLeft widthSideLeft={widthSideLeft} />
         </BoxLeft>
         <BoxMain>
           <AppBar color='secondary'>
@@ -91,7 +91,7 @@ const BoxContainer = styled(Box)`
 
 const BoxLeft = styled(Box)`
   width: ${widthSideLeft}px;
-  background-color: #0B0B0D;
+  background-color: rgba(255,255,255, .07);
   @media screen and (max-width: 900px) {
     display: none;
   }
@@ -99,15 +99,17 @@ const BoxLeft = styled(Box)`
 
 const BoxMain = styled.main`
   width: calc(100% - ${(widthSideLeft + widthSideRight + 30)}px);
+  padding-bottom: 50px;
   @media screen and (max-width: 900px) {
     width: 100%;
     padding-top: 50px;
+    
   }
 `;
 
 const BoxRight = styled(Box)`
   width: ${widthSideRight}px;
-  background-color: #0B0B0D;
+  background-color: rgba(255,255,255, .07);
   padding: 10px 15px;
   @media screen and (max-width: 900px) {
     display: none;
