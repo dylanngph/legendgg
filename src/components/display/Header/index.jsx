@@ -1,62 +1,91 @@
-import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import SearchIcon from '@mui/icons-material/Search';
-import styled from 'styled-components';
 import { navBar } from 'constants/data/navbar';
-import { cateList, SPECIAL_CATE } from 'constants/data/category';
+import { cateList } from 'constants/data/category';
+import { ReactComponent as UserIcon } from 'icons/user.svg';
+import { ReactComponent as SearchIcon } from 'icons/search.svg';
+import styled from 'styled-components';
+
 
 const activeClassName = "active";
 
 function Header() {
   return (
-    <BoxHeader>
-      <BoxLeft>
-        <BoxLogo sx={{width: {md : '180px', xs: '80px'} }}>
-          <NavLink to="/">
-            <img src="/LegendGuildLogo.png" alt="LegendGuildLogo" />
-          </NavLink>
-        </BoxLogo>
-        <BoxNavMenu>
-          {navBar.map((nav) => (
-            <span key={nav.title} className='nav-item'>
-              <NavLink  to={nav.href} className={({ isActive }) =>
-                  (isActive && nav.href !== '#') ? activeClassName : undefined
-                }>
-                <span>{nav.title}</span>
-              </NavLink>
-              {nav.title === 'Sections' && (
-                <BoxSubMenu>
-                  <div>
-                    <Box sx={{ marginBottom: '10px', color: '#888888'}} >CATEGORIES</Box>
-                    <Grid container spacing={2} sx={{ paddingRight: '41px' }}>
-                    {cateList.map((cate) => (
-                      <Grid item xs={6} md={3} key={cate.id}>
-                        <NavLink to={`/cate/${cate.href}`}>
-                          <BoxCate>
-                            <img src={`images/img-cate-${cate.id}.jpg`} alt={cate.title} />
-                          <span>{cate.title}</span>
-                          </BoxCate>
-                        </NavLink>
+    <WrapperHeader>
+      <BoxHeader>
+        <BoxLeft>
+          <BoxLogo sx={{width: {md : '180px', xs: '80px'} }}>
+            <NavLink to="/">
+              <img src="/LegendGuildLogo.png" alt="LegendGuildLogo" />
+            </NavLink>
+          </BoxLogo>
+          <BoxNavMenu>
+            {navBar.map((nav) => (
+              <span key={nav.title} className='nav-item'>
+                <NavLink  to={nav.href} className={({ isActive }) =>
+                    (isActive && nav.href !== '#') ? activeClassName : undefined
+                  }>
+                  <span>{nav.title}</span>
+                </NavLink>
+                {nav.title === 'Sections' && (
+                  <BoxSubMenu>
+                    <div>
+                      <Box sx={{ marginBottom: '10px', color: '#888888'}} >CATEGORIES</Box>
+                      <Grid container spacing={2} sx={{ paddingRight: '41px' }}>
+                      {cateList.map((cate) => (
+                        <Grid item xs={6} md={3} key={cate.id}>
+                          <NavLink to={`/cate/${cate.href}`}>
+                            <BoxCate>
+                              <img src={`images/img-cate-${cate.id}.jpg`} alt={cate.title} />
+                            <span>{cate.title}</span>
+                            </BoxCate>
+                          </NavLink>
+                        </Grid>
+                      ))}
                       </Grid>
-                    ))}
-                    </Grid>
-                  </div>
-                </BoxSubMenu>
-              )}
-            </span>
-          ))}
-        </BoxNavMenu>
-      </BoxLeft>
-      <BoxRight>
-        <AccountCircleIcon sx={{ marginRight: '5px' }} />
-        <SearchIcon />
-      </BoxRight>
-      
-    </BoxHeader>
+                    </div>
+                  </BoxSubMenu>
+                )}
+              </span>
+            ))}
+          </BoxNavMenu>
+        </BoxLeft>
+        <BoxRight>
+          <BoxIcon>
+            <UserIcon />
+          </BoxIcon>
+          <BoxIcon>
+            <SearchIcon />
+          </BoxIcon>
+          <ButtonLink href="#to-dapp">D-app</ButtonLink>
+        </BoxRight>
+      </BoxHeader>
+    </WrapperHeader>
   )
 }
+
+const ButtonLink = styled.a`
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #111111;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 12px;
+`;
+
+const BoxIcon = styled.div`
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+`;
 
 const BoxCate = styled.div`
   position: relative;
@@ -121,7 +150,10 @@ const BoxNavMenu = styled.nav`
   align-items: center;
   .nav-item {
     height: 100%;
-    padding: 10px;
+    padding: 10px 20px;
+    @media screen and (max-width: 600px) {
+      padding: 10px;
+    }
     > a {
       color: #111111;
       text-transform: uppercase;
@@ -172,13 +204,19 @@ const BoxLeft = styled(Box)`
   display: flex;
 `;
 
-const BoxHeader = styled(Box)`
-  padding: 0 25px;
+const BoxHeader = styled.div` 
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
   height: 55px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const WrapperHeader = styled.div`
   border-bottom: 1px solid #eeeeee;
+  padding: 0 25px;
   position: sticky;
   top: 0;
   background-color: #ffffff;

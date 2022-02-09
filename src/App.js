@@ -9,12 +9,14 @@ function App() {
   return (
     <BrowserRouter>
       <Header/>
-      <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/post/:articleSlug" element={<PostScreen />} />
-        <Route path="/lastest" element={<LastestScreen />} />
-        <Route element={<NotFound />} />
-      </Routes>
+      <div className='body-container'>
+        <Routes>
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/post/:articleSlug" element={<PostScreen />} />
+          <Route path="/lastest" element={<LastestScreen />} />
+          <Route element={<NotFound />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

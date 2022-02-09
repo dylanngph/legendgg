@@ -13,7 +13,7 @@ function ArticleDetail({article}) {
     <Box sx={{padding: '25px'}}>
       {article.title ?
       <>
-        <Typography variant='h1' sx={{ padding: { md: '15px 0 25px', xs: '0 0 15px' }, fontSize: { md: '38px', xs: '26px' }, textAlign: 'center' }}>{article.title}</Typography>
+        <Typography variant='h1' sx={{ padding: { md: '15px 0 25px', xs: '0 0 15px' }, fontSize: { md: '38px', xs: '26px' }, textAlign: { md: 'center', xs: 'left' } }}>{article.title}</Typography>
         {article?.thumbnail &&
           <BoxThumbnail>
             <img src={article?.thumbnail} alt={article?.title} />
