@@ -1,15 +1,28 @@
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
 import { navBar } from 'constants/data/navbar';
-import { cateList } from 'constants/data/category';
+// import { cateList } from 'constants/data/category';
 import { ReactComponent as UserIcon } from 'icons/user.svg';
 import { ReactComponent as SearchIcon } from 'icons/search.svg';
+import categoryApi from 'api/categoryApi';
 import styled from 'styled-components';
-
 
 const activeClassName = "active";
 
 function Header() {
+  const [cateList, setCateList] = useState([]);
+
+  useEffect(() => {
+    const fetchList = async () => {
+      try {
+        const response = await categoryApi.getAll();
+        setCateList(response.data);
+      } catch (error) { }
+    }
+    fetchList();
+  }, []);
+
   return (
     <WrapperHeader>
       <BoxHeader>
@@ -28,16 +41,18 @@ function Header() {
                   <span>{nav.title}</span>
                 </NavLink>
                 {nav.title === 'Sections' && (
-                  <BoxSubMenu>
+                  <>
+                  {cateList.length > 0 && (
+                    <BoxSubMenu>
                     <div>
                       <Box sx={{ marginBottom: '10px', color: '#888888'}} >CATEGORIES</Box>
                       <Grid container spacing={2} sx={{ paddingRight: '41px' }}>
-                      {cateList.map((cate) => (
-                        <Grid item xs={6} md={3} key={cate.id}>
-                          <NavLink to={`/cate/${cate.href}`}>
+                      {cateList.map((cate, index) => (
+                        <Grid item xs={6} md={3} key={index}>
+                          <NavLink to={`/cate/${cate.name}`}>
                             <BoxCate>
-                              <img src={`images/img-cate-${cate.id}.jpg`} alt={cate.title} />
-                            <span>{cate.title}</span>
+                              <img src={`images/img-cate-${Math.floor(Math.random() * 7)}.jpg`} alt={cate.name} />
+                              <span>{cate.name}</span>
                             </BoxCate>
                           </NavLink>
                         </Grid>
@@ -45,6 +60,8 @@ function Header() {
                       </Grid>
                     </div>
                   </BoxSubMenu>
+                  )}
+                  </>
                 )}
               </span>
             ))}
@@ -118,6 +135,7 @@ const BoxCate = styled.div`
     font-size: 24px;
     color: #ffffff;
     z-index: 3;
+    text-align: center;
   }
   &:after {
     content: '';
