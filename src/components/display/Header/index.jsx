@@ -14,7 +14,7 @@ function Header() {
     <WrapperHeader>
       <BoxHeader>
         <BoxLeft>
-          <BoxLogo sx={{width: {md : '180px', xs: '80px'} }}>
+          <BoxLogo sx={{width: {md : '180px', xs: '60px'} }}>
             <NavLink to="/">
               <img src="/LegendGuildLogo.png" alt="LegendGuildLogo" />
             </NavLink>
@@ -73,6 +73,9 @@ const ButtonLink = styled.a`
   text-decoration: none;
   font-weight: 500;
   font-size: 12px;
+  @media screen and (max-width: 600px) {
+    padding: 6px 4px;
+  }
 `;
 
 const BoxIcon = styled.div`
@@ -84,6 +87,13 @@ const BoxIcon = styled.div`
     width: 24px;
     height: 24px;
     cursor: pointer;
+  }
+  @media screen and (max-width: 600px) {
+    margin-right: 8px;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
@@ -152,7 +162,7 @@ const BoxNavMenu = styled.nav`
     height: 100%;
     padding: 10px 20px;
     @media screen and (max-width: 600px) {
-      padding: 10px;
+      padding: 10px 5px;
     }
     > a {
       color: #111111;
