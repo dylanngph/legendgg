@@ -1,24 +1,6 @@
 import axiosClient from "./axiosClient";
 
 class PostApi {
-  getPopular = (page, limit) => {
-    const url = '/article/all';
-    const params = {
-      page: page,
-      limit: limit,
-      sortBy: '-nViews'
-    };
-    return axiosClient.get(url, params);
-  };
-  getNew = (page, limit) => {
-    const url = '/article/all';
-    const params = {
-      page: page,
-      limit: limit,
-      sortBy: '-createdAt'
-    };
-    return axiosClient.get(url, { params });
-  };
   getAll = (params) => {
     const url = '/article/all';
     return axiosClient.get(url, { params });

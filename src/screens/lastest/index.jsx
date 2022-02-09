@@ -17,7 +17,12 @@ function LastestScreen() {
     const fetchList = async () => {
       setLoading(true);
       try {
-        const response = await postApi.getNew(pag.page, pag.limit);
+        const params = {
+          page: pag.page,
+          limit: pag.limit,
+          sortBy: '-createdAt'
+        };
+        const response = await postApi.getAll(params);
         setList(response.data);
         setLoading(false);
       } catch (error) { setLoading(false); }

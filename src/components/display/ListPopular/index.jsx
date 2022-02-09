@@ -12,8 +12,12 @@ function ListPopular() {
     const fetchList = async () => {
       setLoading(true);
       try {
-        const PAG = {page: 1, limit: 5};
-        const response = await postApi.getPopular(PAG.page, PAG.limit);
+        const params = {
+          page: 1,
+          limit: 4,
+          sortBy: '-nViews'
+        };
+        const response = await postApi.getAll(params);
         setList(response.data);
         setLoading(false);
       } catch (error) { setLoading(false); }

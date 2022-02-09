@@ -13,8 +13,12 @@ function ListNew() {
     const fetchList = async () => {
       setLoading(true);
       try {
-        const PAG = {page: 1, limit: 3};
-        const response = await postApi.getNew(PAG.page, PAG.limit);
+        const params = {
+          page: 1,
+          limit: 3,
+          sortBy: '-createdAt'
+        };
+        const response = await postApi.getAll(params);
         setList(response.data);
         setLoading(false);
       } catch (error) { setLoading(false); }

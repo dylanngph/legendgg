@@ -1,44 +1,120 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Box, Tabs, Tab, Select, MenuItem } from '@mui/material';
 import ArticleItem from "../ArticleItem";
 import postApi from 'api/postApi';
 import styled from 'styled-components';
-import { cateList, SPECIAL_CATE } from 'constants/data/category';
+import { cateList } from 'constants/data/category';
 import LoadingArticleLg from 'components/display/Loading/articleLg';
+import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 
 function ListArticleSection() {
-  const [value, setValue] = useState(0);
 
-  const [list, setList] = useState([]);
+  const CONFIG_PAG = {
+    page: 1,
+    limit: 10
+  };
+
+  const [valueCate, setValueCate] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [loadingPag, setLoadingPag] = useState(false);
+  const [list, setList] = useState([]);
+  const [pag, setPag] = useState({
+    hasNextPage: false,
+    page: CONFIG_PAG.page,
+    limit: CONFIG_PAG.limit,
+    totalPages: CONFIG_PAG.page,
+    sortBy: '',
+    categories: '',
+  });
 
   useEffect(() => {
-    console.log('>> value: ', value);
+    setList([]);
     const fetchList = async () => {
       setLoading(true);
       try {
-        const params = {
-          page: 1,
-          limit: 10,
+        let params = {
+          page: CONFIG_PAG.page,
+          limit: CONFIG_PAG.limit,
+          sortBy: pag.sortBy,
+          categories: pag.categories,
         };
-        // if (!SPECIAL_CATE.include(cateList[value].title)) {
-        //   params.categories = cateList[value].title;
-        // }
+        const titleCate = cateList[valueCate].key;
+        switch (titleCate) {
+          case 'lastest':
+            params.sortBy = '-createdAt';
+            params.categories = '';
+            break;
+          case 'popular':
+            params.sortBy = '-nViews';
+            params.categories = '';
+            break;
+          default:
+            params.categories = cateList[valueCate].key;
+            params.sortBy = '+createdAt';
+            break;
+        }
         const response = await postApi.getAll(params);
-        setList(response.data);
+        if (response.data) {
+          setList(response.data);
+          let pagTmp = pag;
+          pagTmp.categories = params.categories;
+          pagTmp.sortBy = params.sortBy;
+          pagTmp.hasNextPage = response.hasNextPage;
+          pagTmp.totalPages = response.hasNextPage;
+          setPag(pagTmp);
+        }
         setLoading(false);
-      } catch (error) { setLoading(false); }
+      } catch (error) {
+        setLoading(false);
+      }
     }
     fetchList();
-  }, [value]);
+  }, [valueCate]);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setValueCate(newValue);
   };
 
   const handleChangeSelect = (event) => {
-    setValue(event.target.value);
+    setValueCate(event.target.value);
   };
+
+  const checkLoadNextPage = async () => {
+    if (!pag.hasNextPage || loadingPag) return;
+    try {
+      setLoadingPag(true);
+      let params = {
+        page: pag.page+1,
+        limit: pag.limit,
+        sortBy: pag.sortBy,
+        categories: pag.categories,
+      };
+      const response = await postApi.getAll(params);
+      if (response.data) {
+        setList(list => [...list, ...response.data]);
+        let pagTmp = pag;
+        pagTmp.categories = params.categories;
+        pagTmp.sortBy = params.sortBy;
+        pagTmp.page = params.page;
+        pagTmp.hasNextPage = response.hasNextPage;
+        pagTmp.totalPages = response.hasNextPage;
+        setPag(pagTmp);
+      }
+      setLoadingPag(false);
+    } catch (e) {
+      setLoadingPag(false);
+    }
+  }
+
+  const handleOnDocumentBottom = useCallback(() => {
+    if (!pag.hasNextPage || loadingPag) return;
+    checkLoadNextPage();
+  }, []);
+
+  useBottomScrollListener(handleOnDocumentBottom, {
+    offset: 100,
+    debounce: 500,
+  });
 
   return (
     <WrapperTab sx={{ margin: '30px 0', padding: '0 25px' }}>
@@ -48,7 +124,7 @@ function ListArticleSection() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={value}
+          value={valueCate}
           onChange={handleChangeSelect}
         >
           {cateList.map((cate) => (
@@ -58,7 +134,7 @@ function ListArticleSection() {
       </Box>
       <Box sx={{ visibility: {sm: 'visible', xs: 'hidden'}, height: {sm: 'inherit', xs: '1px'} }}>
         <Tabs
-          value={value}
+          value={valueCate}
           onChange={handleChange}
           indicatorColor="secondary"
           textColor="inherit"
@@ -72,15 +148,21 @@ function ListArticleSection() {
       </Box>
       <Box sx={{paddingTop: '25px'}}>
         {loading?
-        <>
-          <LoadingArticleLg />
-        </>
+        <LoadingArticleLg />
         :
         <>
-          {list.map((article) => (
-            <ArticleItem key={article.id} viewType="lg" article={article} />
-          ))}
+          {list.length ? (
+            <>
+              {list.map((article, index) => (
+                <ArticleItem key={article.id + index} viewType="lg" article={article} />
+              ))}
+            </>
+          ):
+          (
+            <div>Chưa có bài viết</div>
+          )}
         </>}
+        {loadingPag && <LoadingArticleLg />}
       </Box>
     </WrapperTab>
   )
