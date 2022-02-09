@@ -1,5 +1,5 @@
 {
-  "name": "game-dashboard-frontend",
+  "name": "legend-guild-game",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,8 +14,10 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.25.0",
+    "baseUrl": "./src",
     "dotenv": "^14.3.0",
     "html-entities": "^2.3.2",
+    "moment": "^2.29.1",
     "query-string": "^7.1.0",
     "querystring": "^0.2.1",
     "react": "^17.0.2",

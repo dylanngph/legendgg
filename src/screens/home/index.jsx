@@ -1,11 +1,11 @@
-import Banner from "../../components/display/Banner";
-import ListPost from "../../components/display/ListPost";
+import FutureBanner from 'components/display/FutureBanner';
+import ListArticleSection from 'components/display/ListArticleSection';
 
-function HomeScreen (props) {
+function HomeScreen() {
   return (
     <div>
-      <Banner />
-      <ListPost />
+      <FutureBanner />
+      <ListArticleSection />
     </div>
   )
 }

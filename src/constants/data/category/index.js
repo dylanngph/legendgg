@@ -1,14 +1,24 @@
 export const cateList = [
   {
+    id: 0,
+    title: "Mới nhất",
+    href: "lastest",
+  },
+  {
     id: 1,
-    title: "All Posts"
+    title: "Nổi bật",
+    href: "rising"
   },
   {
     id: 2,
-    title: "Kiến thức thị trường"
+    title: "Phổ biến",
+    href: "popular"
   },
   {
     id: 3,
-    title: "Tin tức thị trường"
+    title: "Commented",
+    href: "commented"
   },
-]
+];
+
+export const SPECIAL_CATE = [ 'Lastest', 'Popular'];

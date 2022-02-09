@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from '@mui/material';
 import { useParams } from "react-router-dom";
-import postApi from '../../api/postApi';
-import PostDetail from '../../components/custom/PostDetail';
-import LoadingDetailPost from '../../components/display/Loading/detailpost';
+import postApi from 'api/postApi';
+import ArticleDetail from 'components/display/ArticleDetail';
+import LoadingDetailPost from 'components/display/Loading/detailpost';
 
-function PostScreen(props) {
+function PostScreen() {
   const params = useParams();
-  const [postItem, setPostItem] = useState({});
+  const [articleItem, setArticleItem] = useState({});
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -15,7 +14,7 @@ function PostScreen(props) {
       setLoading(true);
       try {
         const response = await postApi.getDetail(params);
-        setPostItem(response.data);
+        setArticleItem(response.data);
         setLoading(false);
       } catch (error) { setLoading(false); }
     }
@@ -23,9 +22,9 @@ function PostScreen(props) {
   }, []);
 
   return (
-    <Container>
-      {loading ? <LoadingDetailPost /> : <PostDetail post={postItem}/>}
-    </Container>
+    <div>
+      {loading ? <LoadingDetailPost /> : <ArticleDetail article={articleItem}/>}
+    </div>
   )
 }
 

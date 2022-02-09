@@ -3,14 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider } from '@mui/material/styles';
-import { themeCustomApp } from './theme.config';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={themeCustomApp}>
-      <App />
-    </ThemeProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
