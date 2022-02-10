@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
 import { navBar } from 'constants/data/navbar';
-// import { cateList } from 'constants/data/category';
 import { ReactComponent as UserIcon } from 'icons/user.svg';
 import { ReactComponent as SearchIcon } from 'icons/search.svg';
 import categoryApi from 'api/categoryApi';
@@ -72,7 +71,9 @@ function Header() {
             <UserIcon />
           </BoxIcon>
           <BoxIcon>
-            <SearchIcon />
+            <NavLink to={`/search`}>
+              <SearchIcon />
+            </NavLink>
           </BoxIcon>
           <ButtonLink href="#to-dapp">D-app</ButtonLink>
         </BoxRight>
@@ -100,6 +101,11 @@ const BoxIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   svg {
     width: 24px;
     height: 24px;
