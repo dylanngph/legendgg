@@ -19,7 +19,7 @@ function PostScreen() {
       } catch (error) { setLoading(false); }
     }
     fetchProductList();
-  }, []);
+  }, [params]);
 
   return (
     <div>

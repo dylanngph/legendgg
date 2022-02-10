@@ -83,9 +83,17 @@ function LastestScreen() {
       ):
       (
         <>
-        {list.map((article) => (
-          <ArticleItem key={article._id} viewType="lg" article={article} />
-        ))}
+        {list.length ? (
+          <>
+            {list.map((article, index) => (
+              <ArticleItem key={article._id+index} viewType="lg" article={article} />
+            ))}
+          </>
+        ):
+        (
+          <div>Chưa có bài viết</div>
+        )}
+        {loadingPag && <LoadingArticleLg />}
         </>
       )}
     </Box>

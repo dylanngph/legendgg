@@ -153,6 +153,11 @@ const BoxCate = styled.div`
   &:hover:after {
     background-color: rgba(0, 0, 0, 0.5);
   }
+  @media screen and (max-width: 600px) {
+    span {
+      font-size: 16px;
+    }
+  }
 `;
 
 const BoxSubMenu = styled.div`

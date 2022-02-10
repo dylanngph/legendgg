@@ -161,8 +161,8 @@ function ListArticleSection() {
           (
             <div>Chưa có bài viết</div>
           )}
+          {loadingPag && <LoadingArticleLg />}
         </>}
-        {loadingPag && <LoadingArticleLg />}
       </Box>
     </WrapperTab>
   )
