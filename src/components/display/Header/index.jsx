@@ -48,9 +48,9 @@ function Header() {
                       <Grid container spacing={2} sx={{ paddingRight: '41px' }}>
                       {cateList.map((cate, index) => (
                         <Grid item xs={6} md={3} key={index}>
-                          <NavLink to={`/cate/${cate.name}`}>
+                          <NavLink to={`/cate/${cate.slug}`}>
                             <BoxCate>
-                              <img src={`images/img-cate-${Math.floor(Math.random() * 7)}.jpg`} alt={cate.name} />
+                              <img src={`/images/img-cate-${Math.floor(Math.random() * 7)}.jpg`} alt={cate.name} />
                               <span>{cate.name}</span>
                             </BoxCate>
                           </NavLink>

@@ -24,7 +24,8 @@ function ListArticleSection() {
     limit: CONFIG_PAG.limit,
     totalPages: CONFIG_PAG.page,
     sortBy: '',
-    categories: '',
+    categorySlugs: '',
+    tagSlugs: '',
   });
 
   useEffect(() => {
@@ -36,20 +37,21 @@ function ListArticleSection() {
           page: CONFIG_PAG.page,
           limit: CONFIG_PAG.limit,
           sortBy: pag.sortBy,
-          categories: pag.categories,
+          categorySlugs: pag.categorySlugs,
         };
         const titleCate = cateList[valueCate].key;
         switch (titleCate) {
           case 'lastest':
             params.sortBy = '-createdAt';
-            params.categories = '';
+            params.categorySlugs = '';
             break;
           case 'popular':
             params.sortBy = '-nViews';
-            params.categories = '';
+            params.categorySlugs = '';
             break;
           default:
-            params.categories = cateList[valueCate].key;
+            params.tagSlugs = cateList[valueCate].key;
+            params.categorySlugs = '';
             params.sortBy = '+createdAt';
             break;
         }
@@ -57,7 +59,8 @@ function ListArticleSection() {
         if (response.data) {
           setList(response.data);
           let pagTmp = pag;
-          pagTmp.categories = params.categories;
+          pagTmp.categorySlugs = params.categorySlugs;
+          pagTmp.tagSlugs = params.tagSlugs;
           pagTmp.sortBy = params.sortBy;
           pagTmp.hasNextPage = response.hasNextPage;
           pagTmp.totalPages = response.hasNextPage;
@@ -87,13 +90,15 @@ function ListArticleSection() {
         page: pag.page+1,
         limit: pag.limit,
         sortBy: pag.sortBy,
-        categories: pag.categories,
+        categorySlugs: pag.categorySlugs,
+        tagSlugs: pag.tagSlugs,
       };
       const response = await postApi.getAll(params);
       if (response.data) {
         setList(list => [...list, ...response.data]);
         let pagTmp = pag;
-        pagTmp.categories = params.categories;
+        pagTmp.categorySlugs = params.categorySlugs;
+        pagTmp.tagSlugs = params.tagSlugs;
         pagTmp.sortBy = params.sortBy;
         pagTmp.page = params.page;
         pagTmp.hasNextPage = response.hasNextPage;
@@ -141,8 +146,8 @@ function ListArticleSection() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          {cateList.map((cate) => (
-            <Tab key={cate.id} label={cate.title} />
+          {cateList.map((cate, index) => (
+            <Tab key={index} label={cate.title} />
           ))}
         </Tabs>
       </Box>
@@ -154,7 +159,7 @@ function ListArticleSection() {
           {list.length ? (
             <>
               {list.map((article, index) => (
-                <ArticleItem key={article.id + index} viewType="lg" article={article} />
+                <ArticleItem key={index} viewType="lg" article={article} />
               ))}
             </>
           ):

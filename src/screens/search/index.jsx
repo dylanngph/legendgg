@@ -95,7 +95,7 @@ function SearchScreen() {
 
   return (
     <Box sx={{padding: '25px'}}>
-      <Typography variant='h5' sx={{color: '#888888', marginBottom: '10px'}}>Tìm kiếm</Typography>
+      <Typography variant='h1' sx={{color: '#888888', marginBottom: '10px', fontSize: '30px'}}>Tìm kiếm</Typography>
       <form onSubmit={handleSubmitSearch}>
         <Box sx={{maxWidth: '100%'}}>
           <TextField

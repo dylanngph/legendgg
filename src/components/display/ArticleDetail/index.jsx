@@ -25,7 +25,11 @@ function ArticleDetail({article}) {
           </Grid>
           <Grid item xs={12} md={4}>
             <BoxMoreInfo>
-              <span>{article?.tags.join(',')}</span>
+              <span>Danh mục: {article.categories.map((cate, index) => {
+                  if (index > 0) return `, ${cate.name}`
+                  else return cate.name
+                })}
+              </span>
               <span>By {article.author.name} - {moment(article.createdAt).format("DD/MM/YYYY")}</span>
               <Box sx={{ display: 'flex', color: '#888888' }}>
                 <Box sx={{ '& svg': {width: 16, height: 16}, marginRight: '3px' }}>
@@ -39,7 +43,11 @@ function ArticleDetail({article}) {
                 </Box>
                 <span>0</span>
               </Box>
-              <Box sx={{ borderTop: '1px solid #eeeeee', padding: '20px 0' }}>Danh mục: {article?.categories.join(", ")}</Box>
+              <Box sx={{ borderTop: '1px solid #eeeeee', padding: '20px 0' }}>Tag: {article.tags.map((tag, index) => {
+                if (index > 0) return `, #${tag.name}`
+                else return `#${tag.name}`
+              })}
+              </Box>
               <Box sx={{ '& a': { fontWeight: 'bold', color: '#111111' } }}>
                 <NavLink to="/">Trở về trang trước</NavLink>
               </Box>

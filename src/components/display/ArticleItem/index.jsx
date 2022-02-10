@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { VIEW_TYPE } from 'constants/data/article';
 import { Grid, Box } from '@mui/material';
@@ -8,7 +7,6 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import moment from 'moment';
 import styled from 'styled-components';
-
 function ArticleItem({viewType, article}) {
 
   const renderBoxStyle = (viewType, article) => {
@@ -22,7 +20,12 @@ function ArticleItem({viewType, article}) {
               </Grid>
               <Grid item xs={12} md={6}>
                 <BoxTags>
-                  <span>{article.tags.join(',')}</span>
+                  <span>
+                  {article.categories.map((tag, index) => {
+                    if (index > 0) return `, ${tag.name}`
+                    else return tag.name
+                  })}
+                  </span>
                 </BoxTags>
                 <ArticleTitle slug={article.slug} title={article.title} variantFont="24" />
                 {article.shortDescription && (<BoxExcerpt>{article.shortDescription}</BoxExcerpt>)}
