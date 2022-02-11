@@ -13,7 +13,16 @@ const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.request.use(async (config) => {
-  // Handle token here ...
+  const tokenString = localStorage.getItem('token');
+  const token = JSON.parse(tokenString);
+  if (token) {
+    let tpmConfig = {...config};
+    tpmConfig.headers.Authorization = `Bearer ${token}`;
+    config = {
+      ...config,
+      tpmConfig
+    }
+  }
   return config;
 })
 

@@ -4,17 +4,24 @@ export const user = {
   follower: 10,
 }
 
-export const navBarUser = [
+export const navBarUser_normal = [
   {
-    href: '/#',
-    title: 'Profile',
+    href: '/login',
+    title: 'Login',
   },
   {
-    href: '/#',
+    href: '/sign-up',
+    title: 'Sign Up',
+  },
+]
+
+export const navBarUser_ed = [
+  {
+    href: '/my-account',
     title: 'My account',
   },
   {
-    href: '/#',
+    href: '#logout',
     title: 'Logout',
   }
 ]

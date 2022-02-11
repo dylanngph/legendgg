@@ -118,7 +118,7 @@ function SearchScreen() {
           {listSearch.length ? (
             <>
               {listSearch.map((article, index) => (
-                <ArticleItem key={article.id + index} viewType="lg" article={article} />
+                <ArticleItem key={index} viewType="lg" article={article} />
               ))}
             </>
           ):

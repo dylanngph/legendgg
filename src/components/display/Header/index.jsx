@@ -4,12 +4,16 @@ import { Box, Grid } from '@mui/material';
 import { navBar } from 'constants/data/navbar';
 import { ReactComponent as UserIcon } from 'icons/user.svg';
 import { ReactComponent as SearchIcon } from 'icons/search.svg';
+import { navBarUser_normal, navBarUser_ed } from 'constants/data/user';
+import useToken from 'utils/hooks/useToken';
 import categoryApi from 'api/categoryApi';
 import styled from 'styled-components';
 
 const activeClassName = "active";
 
 function Header() {
+  const { token, setToken } = useToken();
+  const [stateNavUser, setStateNavUser] = useState(false);
   const [cateList, setCateList] = useState([]);
 
   useEffect(() => {
@@ -21,6 +25,27 @@ function Header() {
     }
     fetchList();
   }, []);
+
+  useEffect(() => {
+    setStateNavUser(!stateNavUser);
+  }, [token]);
+
+  const handleLogout = () => {
+    setToken(null);
+  }
+
+  const renderMenuUser = () => {
+    if (!token) {
+      return navBarUser_normal.map((item, index) => <NavLink key={index} to={item.href}>{item.title}</NavLink>)
+    } else {
+      return (
+        <div>
+          <NavLink to={navBarUser_ed[0].href}>{navBarUser_ed[0].title}</NavLink>
+          <span onClick={handleLogout}>{navBarUser_ed[1].title}</span>
+        </div>
+      )
+    }
+  }
 
   return (
     <WrapperHeader>
@@ -67,8 +92,13 @@ function Header() {
           </BoxNavMenu>
         </BoxLeft>
         <BoxRight>
-          <BoxIcon>
+          <BoxIcon sx={{position: 'relative', '&:hover': {
+            '&>div': { visibility: 'visible', opacity: 1, 'display': 'block'}
+          }}}>
             <UserIcon />
+            <BoxMenuUser>
+              {renderMenuUser()}
+            </BoxMenuUser>
           </BoxIcon>
           <BoxIcon>
             <NavLink to={`/search`}>
@@ -81,6 +111,30 @@ function Header() {
     </WrapperHeader>
   )
 }
+
+const BoxMenuUser = styled.div`
+  visibility: hidden;
+  opacity: 0;
+  display: none;
+  background-color: #ffffff;
+  position: absolute;
+  width: 150px;
+  top: 55px;
+  transition: all 0.5s;
+  padding: 15px 25px 10px;
+  border: 1px solid #eeeeee;
+  a, span {
+    color: #111111;
+    font-size: 12px;
+    letter-spacing: .5px;
+    line-height: 30px;
+    font-weight: 500;
+    display: block;
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
 
 const ButtonLink = styled.a`
   display: block;
@@ -96,11 +150,12 @@ const ButtonLink = styled.a`
   }
 `;
 
-const BoxIcon = styled.div`
+const BoxIcon = styled(Box)`
   margin-right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
   a {
     display: flex;
     justify-content: center;
@@ -237,6 +292,7 @@ const BoxRight = styled(Box)`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 `;
 
 const BoxLeft = styled(Box)`

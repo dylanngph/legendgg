@@ -8,6 +8,7 @@ export const themeCustomApp = createTheme({
   },
   typography: {
     fontFamily: [
+      'Open Sans',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
