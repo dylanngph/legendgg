@@ -9,8 +9,11 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import CustomButton from 'components/custom/Button';
 import authApi from 'api/authApi';
 import useToken from 'utils/hooks/useToken';
+import { useDispatch } from 'react-redux';
+import { changeStateNavUserMenu } from 'redux/layout/layout.action';
 
 function LoginScreen() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { token, setToken } = useToken();
   const [error, setEror] = useState('');
@@ -39,6 +42,7 @@ function LoginScreen() {
       const response = await authApi.login(params);
       if(response) {
         setToken(response.data.accessToken);
+        dispatch(changeStateNavUserMenu());
         navigate('/');
       }
       setLoading(false);

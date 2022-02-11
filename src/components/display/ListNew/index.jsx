@@ -3,7 +3,6 @@ import ArticleItem from "../ArticleItem";
 import postApi from 'api/postApi';
 import { Grid, Box } from '@mui/material';
 import LoadingArticleThumbLg from 'components/display/Loading/articleThumbLg';
-import LoadingArticleThumbSm from 'components/display/Loading/articleThumbSm';
 
 function ListNew() {
   const [list, setList] = useState([]);
@@ -29,33 +28,13 @@ function ListNew() {
   return (
     <>
       {loading?
-      <>
-        <Grid item xs={12} md={7}>
-          <LoadingArticleThumbLg />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <Box sx={{padding: '0 25px'}}>
-            <LoadingArticleThumbSm />
-            <LoadingArticleThumbSm />
-          </Box>
-        </Grid>
-      </>
+        <LoadingArticleThumbLg />
       :
       <>
         {list.length >=3 && (
-          <>
-          <Grid item xs={12} md={7}>
-            <Box sx={{padding: '0 25px', borderLeft: { md: '1px solid #eeeeee'}, borderRight: { md: '1px solid #eeeeee'}}}>
-              <ArticleItem viewType="thumb_lg" article={list[0]} />
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <Box sx={{padding: '0 25px'}}>
-              <ArticleItem viewType="thumb_sm" article={list[1]} />
-              <ArticleItem viewType="thumb_sm" article={list[2]} />
-            </Box>
-          </Grid>
-          </>
+          <Box sx={{padding: '0 25px', borderLeft: { md: '1px solid #eeeeee'}, borderRight: { md: '1px solid #eeeeee'}}}>
+            <ArticleItem viewType="thumb_lg" article={list[0]} />
+          </Box>
         )}
       </>
       }

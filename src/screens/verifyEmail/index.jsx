@@ -41,27 +41,28 @@ function VerifyEmailScreen() {
   }, []);
   
   return (
-    <ContainerAuth>
+    <>
       {query.get('token') ? (
-        <WrapperEmailVerify>
-          {!error ? (
-            <>
-              <div>đang xác thực email</div>
-              <CircularProgress />
-            </>
-          ) : (
-            <>
-              <div>xác thực email thất bại</div>
-              <div>vui lòng kiểm tra lại hoặc liên hệ admin</div>
-              <NavLink to="/">Trở về trang chủ</NavLink>
-            </>
-          )}
-        </WrapperEmailVerify>
+        <ContainerAuth>
+          <WrapperEmailVerify>
+            {!error ? (
+              <>
+                <div>đang xác thực email</div>
+                <CircularProgress />
+              </>
+            ) : (
+              <>
+                <div>xác thực email thất bại</div>
+                <div>vui lòng kiểm tra lại hoặc liên hệ admin</div>
+                <NavLink to="/">Trở về trang chủ</NavLink>
+              </>
+            )}
+          </WrapperEmailVerify>
+        </ContainerAuth>
       ) : (
         <NotFound />
       )}
-      
-    </ContainerAuth>
+    </>
   )
 }
 

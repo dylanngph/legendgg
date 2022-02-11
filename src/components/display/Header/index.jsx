@@ -5,6 +5,8 @@ import { navBar } from 'constants/data/navbar';
 import { ReactComponent as UserIcon } from 'icons/user.svg';
 import { ReactComponent as SearchIcon } from 'icons/search.svg';
 import { navBarUser_normal, navBarUser_ed } from 'constants/data/user';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeStateNavUserMenu } from 'redux/layout/layout.action';
 import useToken from 'utils/hooks/useToken';
 import categoryApi from 'api/categoryApi';
 import styled from 'styled-components';
@@ -12,8 +14,9 @@ import styled from 'styled-components';
 const activeClassName = "active";
 
 function Header() {
+  const dispatch = useDispatch();
+  const stateNavUserMenu = useSelector((state) => state.layoutReducer.layoutStore.stateNavUserMenu);
   const { token, setToken } = useToken();
-  const [stateNavUser, setStateNavUser] = useState(false);
   const [cateList, setCateList] = useState([]);
 
   useEffect(() => {
@@ -26,16 +29,13 @@ function Header() {
     fetchList();
   }, []);
 
-  useEffect(() => {
-    setStateNavUser(!stateNavUser);
-  }, [token]);
-
   const handleLogout = () => {
     setToken(null);
+    dispatch(changeStateNavUserMenu());
   }
 
   const renderMenuUser = () => {
-    if (!token) {
+    if (!stateNavUserMenu) {
       return navBarUser_normal.map((item, index) => <NavLink key={index} to={item.href}>{item.title}</NavLink>)
     } else {
       return (
@@ -119,7 +119,7 @@ const BoxMenuUser = styled.div`
   background-color: #ffffff;
   position: absolute;
   width: 150px;
-  top: 55px;
+  top: 60px;
   transition: all 0.5s;
   padding: 15px 25px 10px;
   border: 1px solid #eeeeee;
@@ -230,7 +230,7 @@ const BoxSubMenu = styled.div`
   width: 100%;
   min-height: 100px;
   left: 0;
-  top: 55px;
+  top: 60px;
   transition: all 0.5s;
   padding: 15px 25px 10px;
   border-top: 1px solid #eeeeee;
@@ -239,15 +239,12 @@ const BoxSubMenu = styled.div`
 
 const BoxNavMenu = styled.nav`
   display: flex;
-  margin-left: 10px;
+  margin-left: 30px;
   justify-content: center;
   align-items: center;
   .nav-item {
     height: 100%;
     padding: 10px 20px;
-    @media screen and (max-width: 600px) {
-      padding: 10px 5px;
-    }
     > a {
       color: #111111;
       text-transform: uppercase;
@@ -270,7 +267,12 @@ const BoxNavMenu = styled.nav`
       display: block;
     }
   }
-  
+  @media screen and (max-width: 600px) {
+    margin-left: 10px;
+    .nav-item {
+      padding: 10px 5px;
+    }
+  }
 `;
 
 const BoxLogo = styled(Box)`
@@ -303,7 +305,7 @@ const BoxHeader = styled.div`
   max-width: 1600px;
   width: 100%;
   margin: 0 auto;
-  height: 55px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;

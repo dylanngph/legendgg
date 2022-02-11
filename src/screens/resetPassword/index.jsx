@@ -70,9 +70,9 @@ function ResetPasswordScreen() {
   };
   
   return (
-    <ContainerAuth>
+    <>
       {query.get('token') ? (
-        <>
+        <ContainerAuth>
           {!stateSuccess && (<>
           <Box sx={{fontSize: '18px', textTransform: 'uppercase'}}>Thay đổi password</Box>
           <FieldBox>
@@ -119,12 +119,12 @@ function ResetPasswordScreen() {
               <NavLink to="/login">Đăng nhập ngay</NavLink>
             </Box>
           </Box>)}
-        </>
+        </ContainerAuth>
       ) : (
         <NotFound />
       )}
       
-    </ContainerAuth>
+    </>
   )
 }
 

@@ -1,12 +1,7 @@
-import { useState, useEffect } from 'react';
-import CustomButton from 'components/custom/Button';
-import { NavLink } from 'react-router-dom';
-import { Box, OutlinedInput,IconButton, InputAdornment, Fade, Alert, CircularProgress } from '@mui/material';
-import { FieldBox, LabelBox } from 'components/custom/BoxForm';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import authApi from 'api/authApi';
-import useToken from 'utils/hooks/useToken';
+// import { useState, useEffect } from 'react';
+import { Box } from '@mui/material';
+import ComingSoon from 'components/display/ComingSoon';
+// import authApi from 'api/authApi';
 
 function MyAccountScreen() {
   // const [user, setUser] = useState({});
@@ -24,9 +19,7 @@ function MyAccountScreen() {
   // }, []);
 
   return (
-    <Box sx={{padding: '25px'}}>
-      <Box sx={{fontSize: '18px', textTransform: 'uppercase'}}>Thông tin của tôi</Box>
-    </Box>
+    <ComingSoon />
   )
 }
 

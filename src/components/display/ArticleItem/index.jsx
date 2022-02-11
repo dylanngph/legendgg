@@ -125,7 +125,7 @@ const BoxTags = styled(Box)`
   margin-bottom: 20px;
   span {
     cursor: pointer;
-    color: #00469b;
+    color: #95008A;
   }
 `;
 
