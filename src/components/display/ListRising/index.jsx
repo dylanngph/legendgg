@@ -27,7 +27,12 @@ function ListRising() {
   }, []);
 
   return (
-    <Box sx={{padding: '25px', position: {lg: 'sticky'}, top: {lg: 'calc(100vh - 760px)'}}}>
+    <Box sx={{
+      padding: '25px', 
+      position: {lg: 'sticky'}, 
+      // top: {lg: 'calc(100vh - 760px)'}
+    }}
+    >
       {loading?
       (
         <>
