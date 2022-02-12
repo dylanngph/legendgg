@@ -105,7 +105,7 @@ function Header() {
               <SearchIcon />
             </NavLink>
           </BoxIcon>
-          <ButtonLink href="#to-dapp">D-app</ButtonLink>
+          <ButtonLink href="/d-app">D-app</ButtonLink>
         </BoxRight>
       </BoxHeader>
     </WrapperHeader>

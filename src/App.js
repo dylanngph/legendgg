@@ -12,6 +12,7 @@ import MyAccountScreen from 'screens/myAccount';
 import ForgotPasswordScreen from 'screens/forgotPassword';
 import ResetPasswordScreen from 'screens/resetPassword';
 import NotFound from 'components/display/NotFound';
+import ComingSoon from 'components/display/ComingSoon';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/my-account" element={<MyAccountScreen />} />
           <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
           <Route path="/reset-password" element={<ResetPasswordScreen />} />
+          <Route path="/d-app" element={<ComingSoon />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

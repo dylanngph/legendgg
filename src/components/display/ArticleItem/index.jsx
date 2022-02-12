@@ -13,10 +13,10 @@ function ArticleItem({viewType, article}) {
     switch (viewType) {
       case VIEW_TYPE.lg:
         return (
-          <BoxAriticleLg>
+          <BoxArticleLg>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
-                <ArticleThumb slug={article.slug} title={article.title} imgPath={article?.thumbnail} />
+                <ArticleThumb slug={article.slug} title={article.title} imgPath={article?.thumbnail} viewType={viewType} />
               </Grid>
               <Grid item xs={12} md={6}>
                 <BoxTags>
@@ -46,14 +46,14 @@ function ArticleItem({viewType, article}) {
                 </BoxMoreInfo>
               </Grid>
             </Grid>
-          </BoxAriticleLg>
+          </BoxArticleLg>
         )
       case VIEW_TYPE.sm:
         return (
-          <BoxAriticleSm>
+          <BoxArticleSm>
             <Grid container spacing={2}>
               <Grid item xs={4}>
-                <ArticleThumb slug={article.slug} title={article.title} imgPath={article?.thumbnail} />
+                <ArticleThumb slug={article.slug} title={article.title} imgPath={article?.thumbnail} viewType={viewType} />
               </Grid>
               <Grid item xs={8}>
                 <ArticleTitle slug={article.slug} title={article.title} variantFont="16" />
@@ -73,28 +73,28 @@ function ArticleItem({viewType, article}) {
                 </BoxMoreInfo>
               </Grid>
             </Grid>
-          </BoxAriticleSm>
+          </BoxArticleSm>
         )
       case VIEW_TYPE.thumbLg:
         return (
-          <BoxAriticleThumbLg>
-            <ArticleThumb slug={article.slug} title={article.title} imgPath={article?.thumbnail} />
+          <BoxArticleThumbLg>
+            <ArticleThumb slug={article.slug} title={article.title} imgPath={article?.thumbnail} viewType={viewType} />
             <ArticleTitle slug={article.slug} title={article.title} variantFont="28" />
-          </BoxAriticleThumbLg>
+          </BoxArticleThumbLg>
         )
       case VIEW_TYPE.thumbSm:
         return (
-          <BoxAriticleThumbSm>
-            <ArticleThumb slug={article.slug} title={article.title} imgPath={article?.thumbnail} />
+          <BoxArticleThumbSm>
+            <ArticleThumb slug={article.slug} title={article.title} imgPath={article?.thumbnail} viewType={viewType} />
             <ArticleTitle slug={article.slug} title={article.title} variantFont="18" />
-          </BoxAriticleThumbSm>
+          </BoxArticleThumbSm>
         )
       default:
         return (
-          <BoxAriticleThumbSm>
-            <ArticleThumb slug={article.slug} title={article.title} imgPath={article?.thumbnail} />
+          <BoxArticleThumbSm>
+            <ArticleThumb slug={article.slug} title={article.title} imgPath={article?.thumbnail} viewType={viewType} />
             <ArticleTitle slug={article.slug} title={article.title} variantFont="18" />
-          </BoxAriticleThumbSm>
+          </BoxArticleThumbSm>
         )
     }
   }
@@ -139,13 +139,13 @@ const BoxMoreInfo = styled(Box)`
   }
 `;
 
-const BoxAriticleThumbLg = styled(Box)``;
+const BoxArticleThumbLg = styled(Box)``;
 
-const BoxAriticleThumbSm = styled(Box)`
+const BoxArticleThumbSm = styled(Box)`
   margin-bottom: 20px;
 `;
 
-const BoxAriticleSm = styled(Box)`
+const BoxArticleSm = styled(Box)`
   padding-bottom: 20px;
   margin-bottom: 20px;
   min-height: 100px;
@@ -157,7 +157,7 @@ const BoxAriticleSm = styled(Box)`
   }
 `;
 
-const BoxAriticleLg = styled(Box)`
+const BoxArticleLg = styled(Box)`
   padding-bottom: 20px;
   h2 {
     margin-top: -5px;
