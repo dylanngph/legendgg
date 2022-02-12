@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from "react-router-dom";
 import ArticleItem from "components/display/ArticleItem";
 import postApi from 'api/postApi';
-import { Box, Tabs, Tab, Typography } from '@mui/material';
+import { Box, Tabs, Tab } from '@mui/material';
 import LoadingArticleLg from 'components/display/Loading/articleLg';
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import SectionRising from 'components/display/SectionRising';

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
 import { navBar } from 'constants/data/navbar';
+import Burger from './burger';
+import Menu from './menu';
 import { ReactComponent as UserIcon } from 'icons/user.svg';
 import { ReactComponent as SearchIcon } from 'icons/search.svg';
 import { navBarUser_normal, navBarUser_ed } from 'constants/data/user';
@@ -18,6 +20,8 @@ function Header() {
   const stateNavUserMenu = useSelector((state) => state.layoutReducer.layoutStore.stateNavUserMenu);
   const { token, setToken } = useToken();
   const [cateList, setCateList] = useState([]);
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchList = async () => {
@@ -28,6 +32,10 @@ function Header() {
     }
     fetchList();
   }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location])
 
   const handleLogout = () => {
     setToken(null);
@@ -51,11 +59,15 @@ function Header() {
     <WrapperHeader>
       <BoxHeader>
         <BoxLeft>
-          <BoxLogo sx={{width: {md : '180px', xs: '60px'} }}>
+          <Box sx={{display: {xs: 'block', md: 'none'}, marginRight: '10px'}}>
+            <Burger open={open} setOpen={setOpen} />
+          </Box>
+          <BoxLogo sx={{width: { xs: '80px', md: '180px'} }}>
             <NavLink to="/">
               <img src="/LegendGuildLogo.png" alt="LegendGuildLogo" />
             </NavLink>
           </BoxLogo>
+          <Box sx={{height: '100%', display: {xs: 'none', md: 'block'}}}>
           <BoxNavMenu>
             {navBar.map((nav) => (
               <span key={nav.title} className='nav-item'>
@@ -90,6 +102,7 @@ function Header() {
               </span>
             ))}
           </BoxNavMenu>
+          </Box>
         </BoxLeft>
         <BoxRight>
           <BoxIcon sx={{position: 'relative', '&:hover': {
@@ -108,6 +121,7 @@ function Header() {
           <ButtonLink href="/d-app">D-app</ButtonLink>
         </BoxRight>
       </BoxHeader>
+      <Menu open={open} cateList={cateList}/>
     </WrapperHeader>
   )
 }
@@ -242,6 +256,7 @@ const BoxNavMenu = styled.nav`
   margin-left: 30px;
   justify-content: center;
   align-items: center;
+  height: 100%;
   .nav-item {
     height: 100%;
     padding: 10px 20px;
@@ -299,6 +314,7 @@ const BoxRight = styled(Box)`
 
 const BoxLeft = styled(Box)`
   display: flex;
+  height: 100%;
 `;
 
 const BoxHeader = styled.div` 

@@ -11,6 +11,8 @@ import VerifyEmailScreen from 'screens/verifyEmail';
 import MyAccountScreen from 'screens/myAccount';
 import ForgotPasswordScreen from 'screens/forgotPassword';
 import ResetPasswordScreen from 'screens/resetPassword';
+import PartnerScreen from 'screens/partner';
+import ContactScreen from 'screens/contact';
 import NotFound from 'components/display/NotFound';
 import ComingSoon from 'components/display/ComingSoon';
 
@@ -22,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/post/:articleSlug" element={<PostScreen />} />
-          <Route path="/lastest" element={<LastestScreen />} />
+          <Route path="/latest" element={<LastestScreen />} />
           <Route path="/cate/:cateSlug" element={<CateScreen />} />
           <Route path="/search" element={<SearchScreen />} />
           <Route path="/login" element={<LoginScreen />} />
@@ -31,6 +33,8 @@ function App() {
           <Route path="/my-account" element={<MyAccountScreen />} />
           <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
           <Route path="/reset-password" element={<ResetPasswordScreen />} />
+          <Route path="/partner" element={<PartnerScreen />} />
+          <Route path="/contact" element={<ContactScreen />} />
           <Route path="/d-app" element={<ComingSoon />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
