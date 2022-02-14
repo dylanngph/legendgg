@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { VIEW_TYPE } from 'constants/data/article';
 import { Grid, Box } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 import ArticleTitle from 'components/custom/Article/title';
 import ArticleThumb from 'components/custom/Article/thumb';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
@@ -21,9 +22,9 @@ function ArticleItem({viewType, article}) {
               <Grid item xs={12} md={6}>
                 <BoxTags>
                   <span>
-                  {article.categories.map((tag, index) => {
-                    if (index > 0) return `, ${tag?.name}`
-                    else return tag?.name
+                  {article.categories.map((cate, index) => {
+                    if (index > 0) return (<>, <NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink></>)
+                    else return (<NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink>)
                   })}
                   </span>
                 </BoxTags>
@@ -123,9 +124,10 @@ const BoxExcerpt = styled(Box)`
 
 const BoxTags = styled(Box)`
   margin-bottom: 20px;
-  span {
+  span, a {
     cursor: pointer;
     color: #95008A;
+    text-decoration: none;
   }
 `;
 

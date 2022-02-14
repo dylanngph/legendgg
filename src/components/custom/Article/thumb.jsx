@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { VIEW_TYPE, SIZE_HEIGHT_VIEW_TYPE } from 'constants/data/article';
+import { SIZE_HEIGHT_VIEW_TYPE } from 'constants/data/article';
 
 function ArticleThumb({slug, title, imgPath, viewType}) {
   return (

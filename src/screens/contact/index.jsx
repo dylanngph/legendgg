@@ -6,6 +6,7 @@ import { ReactComponent as SMSIcon } from 'icons/sms.svg';
 import { FieldBox, LabelBox } from 'components/custom/BoxForm';
 import CustomButton from 'components/custom/Button';
 import { validateEmail } from 'utils/helpers';
+import { CONTACT_SETTING } from 'constants/data/contact';
 import contactApi from 'api/contactApi';
 import styled from 'styled-components';
 
@@ -27,7 +28,9 @@ function ContactScreen() {
   };
 
   const handleInputChangeTextarea = (event) => {
-    setValues({ ...values, ['message']: event.target.value });
+    const valTpm = values;
+    valTpm.message = event.target.value;
+    setValues(valTpm);
   }
 
   const handleSend = async () => {
@@ -52,7 +55,6 @@ function ContactScreen() {
   };
 
   const validator = () => {
-    console.log('>> ', values);
     if (!values.firstName || !values.lastName || !values.email || !values.message) {
       return 'Vui lòng nhập đầy đủ';
     } else {
@@ -76,21 +78,21 @@ function ContactScreen() {
                   <LocationIcon />
                   <Box sx={{ marginLeft: '10px'}}>Address</Box>
                 </BoxTitle>
-                <BoxContent>138 Robinson Road #02-50 Singapore 068906</BoxContent>
+                <BoxContent>{CONTACT_SETTING.address}</BoxContent>
               </BoxInfo>
               <BoxInfo>
                 <BoxTitle>
                   <CallIcon />
                   <Box sx={{ marginLeft: '10px'}}>Phone</Box>
                 </BoxTitle>
-                <BoxContent><a href="tel:6596416855">+65 9641 6855</a></BoxContent>
+                <BoxContent><a href={`tel:${CONTACT_SETTING.phone.replaceAll(' ', '')}`}>{CONTACT_SETTING.phone}</a></BoxContent>
               </BoxInfo>
               <BoxInfo>
                 <BoxTitle>
                   <SMSIcon />
                   <Box sx={{ marginLeft: '10px'}}>Email</Box>
                 </BoxTitle>
-                <BoxContent>Email: <a href="mailto:hi@cgstudio.org">hi@cgstudio.org</a></BoxContent>
+                <BoxContent>Email: <a href={`mailto:${CONTACT_SETTING.email}`}>{CONTACT_SETTING.email}</a></BoxContent>
               </BoxInfo>
             </Box>
           </Grid>

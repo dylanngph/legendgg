@@ -1,5 +1,5 @@
 import { Grid, Box, Typography } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
@@ -9,6 +9,8 @@ import moment from 'moment';
 import styled from 'styled-components';
 
 function ArticleDetail({article}) {
+  const navigate = useNavigate();
+
   return (
     <Box sx={{padding: '25px'}}>
       {article.title && (
@@ -26,8 +28,8 @@ function ArticleDetail({article}) {
           <Grid item xs={12} md={4}>
             <BoxMoreInfo>
               <span>Danh mục: {article.categories.map((cate, index) => {
-                  if (index > 0) return `, ${cate.name}`
-                  else return cate.name
+                  if (index > 0) return (<>, <NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink></>)
+                  else return (<NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink>)
                 })}
               </span>
               <span>By {article.author.name} - {moment(article.createdAt).format("DD/MM/YYYY")}</span>
@@ -49,7 +51,7 @@ function ArticleDetail({article}) {
               })}
               </Box>
               <Box sx={{ '& a': { fontWeight: 'bold', color: '#111111' } }}>
-                <NavLink to="/">Trở về trang trước</NavLink>
+                <button onClick={() => navigate(-1)}>Trở về trang trước</button>
               </Box>
             </BoxMoreInfo>
           </Grid>
@@ -70,6 +72,19 @@ const BoxMoreInfo = styled(Box)`
   span {
     display: block;
     margin-bottom: 10px;
+  }
+  button {
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+    text-decoration: underline;
+    font-weight: 600;
+    color: #111111;
+    font-family: 'Open Sans';
+    cursor: pointer;
+  }
+  a {
+    color: #222222;
   }
 `;
 
