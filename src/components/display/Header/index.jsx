@@ -259,7 +259,7 @@ const BoxNavMenu = styled.nav`
   height: 100%;
   .nav-item {
     height: 100%;
-    padding: 10px 20px;
+    padding: 0 20px;
     > a {
       color: #111111;
       text-transform: uppercase;

@@ -27,12 +27,12 @@ function ArticleDetail({article}) {
           </Grid>
           <Grid item xs={12} md={4}>
             <BoxMoreInfo>
-              <span>Danh mục: {article.categories.map((cate, index) => {
-                  if (index > 0) return (<>, <NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink></>)
-                  else return (<NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink>)
+              <Box sx={{marginBottom: '10px'}}>Danh mục: {article.categories.map((cate, index) => {
+                  if (index > 0) return (<span key={index}>, <NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink></span>)
+                  else return (<span key={index}><NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink></span>)
                 })}
-              </span>
-              <span>By {article.author.name} - {moment(article.createdAt).format("DD/MM/YYYY")}</span>
+              </Box>
+              <Box sx={{marginBottom: '10px'}}>By {article.author.name} - {moment(article.createdAt).format("DD/MM/YYYY")}</Box>
               <Box sx={{ display: 'flex', color: '#888888' }}>
                 <Box sx={{ '& svg': {width: 16, height: 16}, marginRight: '3px' }}>
                   <LocalFireDepartmentIcon />
@@ -69,10 +69,6 @@ const BoxMoreInfo = styled(Box)`
   font-size: 13px;
   color: #222222;
   padding: 20px 20px 20px 0;
-  span {
-    display: block;
-    margin-bottom: 10px;
-  }
   button {
     border: 0;
     background-color: transparent;

@@ -21,12 +21,12 @@ function ArticleItem({viewType, article}) {
               </Grid>
               <Grid item xs={12} md={6}>
                 <BoxTags>
-                  <span>
+                  <div>
                   {article.categories.map((cate, index) => {
-                    if (index > 0) return (<>, <NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink></>)
-                    else return (<NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink>)
+                    if (index > 0) return (<span key={index}>, <NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink></span>)
+                    else return (<span key={index}><NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink></span>)
                   })}
-                  </span>
+                  </div>
                 </BoxTags>
                 <ArticleTitle slug={article.slug} title={article.title} variantFont="24" />
                 {article.shortDescription && (<BoxExcerpt>{article.shortDescription}</BoxExcerpt>)}
