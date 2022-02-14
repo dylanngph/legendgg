@@ -11,8 +11,8 @@ import styled from 'styled-components';
 function ArticleDetail({article}) {
   return (
     <Box sx={{padding: '25px'}}>
-      {article.title ?
-      <>
+      {article.title && (
+        <>
         <Typography variant='h1' sx={{ padding: { md: '15px 0 25px', xs: '0 0 15px' }, fontSize: { md: '38px', xs: '26px' }, textAlign: { md: 'center', xs: 'left' } }}>{article.title}</Typography>
         {article?.thumbnail &&
           <BoxThumbnail>
@@ -55,9 +55,8 @@ function ArticleDetail({article}) {
           </Grid>
         </Grid>
         <ListRelated articleId={article._id}/>
-      </>
-      :
-      <Typography variant='h2' sx={{ paddingTop: '15px' }}>404 - Article not found</Typography>}
+        </>
+      )}
     </Box>
   )
 }

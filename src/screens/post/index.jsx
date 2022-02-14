@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
+import { Typography } from '@mui/material';
 import postApi from 'api/postApi';
 import ArticleDetail from 'components/display/ArticleDetail';
 import LoadingDetailPost from 'components/display/Loading/detailpost';
@@ -23,7 +24,14 @@ function PostScreen() {
 
   return (
     <div>
-      {loading ? <LoadingDetailPost /> : <ArticleDetail article={articleItem}/>}
+      {loading ? <LoadingDetailPost /> : (
+        <>
+        {!articleItem.name ? (
+          <ArticleDetail article={articleItem}/>
+        ) : (<Typography variant='h2' sx={{ paddingTop: '15px' }}>404 - Article not found</Typography>)}
+        </>
+        )
+      }
     </div>
   )
 }

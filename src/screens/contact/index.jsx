@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Grid, Box, Typography, TextField, TextareaAutosize, Fade, CircularProgress, Alert } from '@mui/material';
 import { ReactComponent as CallIcon } from 'icons/call.svg';
 import { ReactComponent as LocationIcon } from 'icons/location.svg';
