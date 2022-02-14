@@ -62,7 +62,7 @@ function Header() {
           <Box sx={{display: {xs: 'block', md: 'none'}, marginRight: '10px'}}>
             <Burger open={open} setOpen={setOpen} />
           </Box>
-          <BoxLogo sx={{width: { xs: '80px', md: '180px'} }}>
+          <BoxLogo sx={{width: { xs: '100px', md: '180px'} }}>
             <NavLink to="/">
               <img src="/LegendGuildLogo.png" alt="LegendGuildLogo" />
             </NavLink>

@@ -13,7 +13,7 @@ function Burger({ setOpen, open }) {
 
 const StyledBurger = styled.button`
   width: 1.8rem;
-  height: 2rem;
+  height: 33px;
   position: relative;
   top: 14px;
   right: 5px;
