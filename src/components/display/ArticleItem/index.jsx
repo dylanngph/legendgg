@@ -22,14 +22,14 @@ function ArticleItem({viewType, article}) {
                 <BoxTags>
                   <span>
                   {article.categories.map((tag, index) => {
-                    if (index > 0) return `, ${tag.name}`
-                    else return tag.name
+                    if (index > 0) return `, ${tag?.name}`
+                    else return tag?.name
                   })}
                   </span>
                 </BoxTags>
                 <ArticleTitle slug={article.slug} title={article.title} variantFont="24" />
                 {article.shortDescription && (<BoxExcerpt>{article.shortDescription}</BoxExcerpt>)}
-                <BoxAuthor>By {article.author.name} - {moment(article.createdAt).format("DD/MM/YYYY")}</BoxAuthor>
+                <BoxAuthor>By {article.author?.name} - {moment(article.createdAt).format("DD/MM/YYYY")}</BoxAuthor>
                 <BoxMoreInfo>
                   <Box sx={{ display: 'flex' }}>
                     <Box sx={{ '& svg': {color: '#999999', width: 16, height: 16}, marginRight: '3px' }}>
