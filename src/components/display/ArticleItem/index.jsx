@@ -31,7 +31,7 @@ function ArticleItem({viewType, article}) {
                 <ArticleTitle slug={article.slug} title={article.title} variantFont="24" />
                 {article.shortDescription && (<BoxExcerpt>{article.shortDescription}</BoxExcerpt>)}
                 <BoxAuthor>By {article.author?.name} - {moment(article.createdAt).format("DD/MM/YYYY")}</BoxAuthor>
-                <BoxMoreInfo>
+                {/* <BoxMoreInfo>
                   <Box sx={{ display: 'flex' }}>
                     <Box sx={{ '& svg': {color: '#999999', width: 16, height: 16}, marginRight: '3px' }}>
                       <LocalFireDepartmentIcon />
@@ -44,7 +44,7 @@ function ArticleItem({viewType, article}) {
                     </Box>
                     <span>0</span>
                   </Box>
-                </BoxMoreInfo>
+                </BoxMoreInfo> */}
               </Grid>
             </Grid>
           </BoxArticleLg>
@@ -58,7 +58,7 @@ function ArticleItem({viewType, article}) {
               </Grid>
               <Grid item xs={8}>
                 <ArticleTitle slug={article.slug} title={article.title} variantFont="16" />
-                <BoxMoreInfo>
+                {/* <BoxMoreInfo>
                   <Box sx={{ display: 'flex' }}>
                     <Box sx={{ '& svg': {color: '#f1555b', width: 16, height: 16}, marginRight: '3px' }}>
                       <LocalFireDepartmentIcon />
@@ -71,7 +71,7 @@ function ArticleItem({viewType, article}) {
                     </Box>
                     <span>0</span>
                   </Box>
-                </BoxMoreInfo>
+                </BoxMoreInfo> */}
               </Grid>
             </Grid>
           </BoxArticleSm>

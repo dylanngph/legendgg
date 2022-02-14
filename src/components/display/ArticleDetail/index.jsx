@@ -33,7 +33,7 @@ function ArticleDetail({article}) {
                 })}
               </Box>
               <Box sx={{marginBottom: '10px'}}>By {article.author.name} - {moment(article.createdAt).format("DD/MM/YYYY")}</Box>
-              <Box sx={{ display: 'flex', color: '#888888' }}>
+              {/* <Box sx={{ display: 'flex', color: '#888888' }}>
                 <Box sx={{ '& svg': {width: 16, height: 16}, marginRight: '3px' }}>
                   <LocalFireDepartmentIcon />
                 </Box>
@@ -44,7 +44,7 @@ function ArticleDetail({article}) {
                   <ModeCommentIcon />
                 </Box>
                 <span>0</span>
-              </Box>
+              </Box> */}
               <Box sx={{ borderTop: '1px solid #eeeeee', padding: '20px 0' }}>Tag: {article.tags.map((tag, index) => {
                 if (index > 0) return `, #${tag.name}`
                 else return `#${tag.name}`

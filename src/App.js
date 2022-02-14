@@ -35,7 +35,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPasswordScreen />} />
           <Route path="/partner" element={<PartnerScreen />} />
           <Route path="/contact" element={<ContactScreen />} />
-          <Route path="/d-app" element={<ComingSoon />} />
+          <Route path="/digital-assets" element={<ComingSoon />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

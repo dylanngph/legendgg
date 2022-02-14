@@ -118,7 +118,7 @@ function Header() {
               <SearchIcon />
             </NavLink>
           </BoxIcon>
-          <ButtonLink href="/d-app">D-app</ButtonLink>
+          <ButtonLink href="/digital-assets">Digital Assets</ButtonLink>
         </BoxRight>
       </BoxHeader>
       <Menu open={open} cateList={cateList}/>
