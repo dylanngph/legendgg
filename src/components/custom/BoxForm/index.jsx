@@ -17,7 +17,7 @@ const WrapperFieldBox = styled(Box)`
 `;
 
 const WrapperLabelBox = styled(Box)`
-  color: #58667E;
+  color: #432C32;
   font-weight: 500;
   font-size: 14px;
   margin-bottom: 5px;
