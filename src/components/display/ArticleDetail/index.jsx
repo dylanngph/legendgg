@@ -32,7 +32,7 @@ function ArticleDetail({article}) {
                   else return (<span key={index}><NavLink to={`/cate/${cate?.slug}`}>{cate?.name}</NavLink></span>)
                 })}
               </Box>
-              <Box sx={{marginBottom: '10px'}}>By {article.author.name} - {moment(article.createdAt).format("DD/MM/YYYY")}</Box>
+              <Box sx={{marginBottom: '10px'}}>By {article?.author?.name} - {moment(article.createdAt).format("DD/MM/YYYY")}</Box>
               {/* <Box sx={{ display: 'flex', color: '#888888' }}>
                 <Box sx={{ '& svg': {width: 16, height: 16}, marginRight: '3px' }}>
                   <LocalFireDepartmentIcon />
