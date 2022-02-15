@@ -53,10 +53,10 @@ function ArticleItem({viewType, article}) {
         return (
           <BoxArticleSm>
             <Grid container spacing={2}>
-              <Grid item xs={4}>
+              <Grid item xs={5}>
                 <ArticleThumb slug={article.slug} title={article.title} imgPath={article?.thumbnail} viewType={viewType} />
               </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={7}>
                 <ArticleTitle slug={article.slug} title={article.title} variantFont="16" />
                 {/* <BoxMoreInfo>
                   <Box sx={{ display: 'flex' }}>
