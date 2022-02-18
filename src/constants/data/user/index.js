@@ -7,21 +7,21 @@ export const user = {
 export const navBarUser_normal = [
   {
     href: '/login',
-    title: 'Login',
+    title: 'Đăng nhập',
   },
   {
     href: '/sign-up',
-    title: 'Sign Up',
+    title: 'Đăng kí',
   },
 ]
 
 export const navBarUser_ed = [
   {
     href: '/my-account',
-    title: 'My account',
+    title: 'Tài khoản của tôi',
   },
   {
     href: '#logout',
-    title: 'Logout',
+    title: 'Đăng xuất',
   }
 ]

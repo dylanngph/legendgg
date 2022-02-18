@@ -100,7 +100,7 @@ function SearchScreen() {
         <Box sx={{maxWidth: '100%'}}>
           <TextField
             fullWidth 
-            label="Search Legend Guild Game" 
+            label="Tìm kiếm trong Legend Guild Game"
             id="search"
             value={inputSearch}
             onChange={handleChangeSearch}
