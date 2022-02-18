@@ -21,11 +21,11 @@ function PartnerScreen() {
   return (
     <Box sx={{padding: '25px'}}>
       <Box sx={{textAlign: 'center', marginBottom: '60px'}}>
-        <Typography variant='h1' sx={{ padding: { md: '15px 0', xs: '0 0 15px' }, fontWeight: 'bold', fontSize: { md: '38px', xs: '26px' } }}> Our Partners </Typography>
-        <div>We’ve integrated with the below partners and more.</div>
+        <Typography variant='h1' sx={{ padding: { md: '15px 0', xs: '0 0 15px' }, fontWeight: 'bold', fontSize: { md: '38px', xs: '26px' } }}>Đối tác của chúng tôi</Typography>
+        <div>Chúng tôi đã hợp tác với các đối tác bên dưới và hơn thế nữa.</div>
       </Box>
       {loading && (
-        <Grid container justifyContent='center' spacing={2}>
+        <Grid container justifyContent='center' alignItems='center' spacing={2}>
           <Grid item xs={6} sm={4} md={2.4}>
             <Skeleton animation="wave" variant="rectangular" width="100%" height={120} />
           </Grid>
@@ -43,7 +43,7 @@ function PartnerScreen() {
       {!loading && (
         <>
         {listPartner.length > 0 && (
-          <Grid container justifyContent='center' spacing={2}>
+          <Grid container justifyContent='center' alignItems='center' spacing={2}>
           {listPartner.map((partner, index) => (
             <Grid key={index} item xs={6} sm={4} md={2.4}>
               <a href={partner.website} target='_blank' rel="noreferrer">

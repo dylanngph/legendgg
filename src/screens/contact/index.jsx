@@ -66,8 +66,8 @@ function ContactScreen() {
   return (
     <Box sx={{padding: '25px'}}>
       <Box sx={{textAlign: 'center', marginBottom: '60px'}}>
-        <Typography variant='h1' sx={{ padding: { md: '15px 0', xs: '0 0 15px' }, fontWeight: 'bold', fontSize: { md: '38px', xs: '26px' } }}>Contact Us</Typography>
-        <div>We are ready to lead you into the future</div>
+        <Typography variant='h1' sx={{ padding: { md: '15px 0', xs: '0 0 15px' }, fontWeight: 'bold', fontSize: { md: '38px', xs: '26px' } }}>Liên hệ với chúng tôi</Typography>
+        <div>Chúng tôi sẵn sàng dẫn dắt bạn trong tương lai</div>
       </Box>
       <Box sx={{ maxWidth: {lg: '900px'}, margin: '0 auto' }}>
         <Grid container spacing={2}>
@@ -76,14 +76,14 @@ function ContactScreen() {
               <BoxInfo>
                 <BoxTitle>
                   <LocationIcon />
-                  <Box sx={{ marginLeft: '10px'}}>Address</Box>
+                  <Box sx={{ marginLeft: '10px'}}>Địa chỉ</Box>
                 </BoxTitle>
                 <BoxContent>{CONTACT_SETTING.address}</BoxContent>
               </BoxInfo>
               <BoxInfo>
                 <BoxTitle>
                   <CallIcon />
-                  <Box sx={{ marginLeft: '10px'}}>Phone</Box>
+                  <Box sx={{ marginLeft: '10px'}}>Số điện thoại</Box>
                 </BoxTitle>
                 <BoxContent><a href={`tel:${CONTACT_SETTING.phone.replaceAll(' ', '')}`}>{CONTACT_SETTING.phone}</a></BoxContent>
               </BoxInfo>
@@ -100,27 +100,27 @@ function ContactScreen() {
           {!stateSuccess && (
             <Box sx={{ backgroundColor: '#f5f5f5', borderRadius: '6px', padding: '24px', maxWidth: '100%', margin: '0 auto', width: { md: '400px'} }}>
               <FieldBox sx={{width: '100%'}}>
-                <LabelBox sx={{fontWeight: '600'}}>First Name</LabelBox>
+                <LabelBox sx={{fontWeight: '600'}}>Tên</LabelBox>
                   <WrapperInput>
                     <TextField
                       fullWidth
                       name="firstName"
                       value={values.firstName}
                       onChange={handleInputChange}
-                      placeholder="Enter your first name"
+                      placeholder="Nhập vào tên của bạn"
                       variant="outlined"
                     />
                   </WrapperInput>
               </FieldBox>
               <FieldBox sx={{width: '100%'}}>
-                <LabelBox sx={{fontWeight: '600'}}>Last Name</LabelBox>
+                <LabelBox sx={{fontWeight: '600'}}>Họ</LabelBox>
                 <WrapperInput>
                   <TextField
                     fullWidth
                     name="lastName"
                     value={values.lastName}
                     onChange={handleInputChange}
-                    placeholder="Enter your last name"
+                    placeholder="Nhập vào họ của bạn"
                     variant="outlined"
                   />
                 </WrapperInput>
@@ -133,18 +133,18 @@ function ContactScreen() {
                     name="email"
                     value={values.email}
                     onChange={handleInputChange}
-                    placeholder="Enter your email"
+                    placeholder="Nhập vào email của bạn"
                     variant="outlined"
                   />
                 </WrapperInput>
               </FieldBox>
               <FieldBox sx={{width: '100%'}}>
-                <LabelBox sx={{fontWeight: '600'}}>Message</LabelBox>
+                <LabelBox sx={{fontWeight: '600'}}>Lời nhắn</LabelBox>
                 <WrapperInput>
                   <TextareaAutosize
                     aria-label="minimum height"
                     minRows={4}
-                    placeholder="Enter your message"
+                    placeholder="Nhập vào lời nhắn của bạn"
                     style={{ width: 200 }}
                     value={values.massage}
                     name="massage"
@@ -159,7 +159,7 @@ function ContactScreen() {
                   onClick={() => handleSend(values)}
                   className={loading ? 'loading-btn' : ''}
                 >
-                  {!loading ? 'Send' : (<Fade
+                  {!loading ? 'Gửi' : (<Fade
                     in={loading}
                     unmountOnExit
                   >
@@ -170,7 +170,7 @@ function ContactScreen() {
             </Box>
           )}
           {stateSuccess && (
-            <Alert severity="success">Sent successfully</Alert>
+            <Alert severity="success">Gửi liên hệ thành công</Alert>
           )}
           </Grid>
         </Grid>

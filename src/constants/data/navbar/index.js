@@ -9,10 +9,10 @@ export const navBar = [
   },
   {
     href: "/partner",
-    title: "Partner",
+    title: "Đối tác",
   },
   {
     href: "/contact",
-    title: "Contact",
+    title: "Liên lạc",
   },
 ];
