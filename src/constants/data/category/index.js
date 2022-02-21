@@ -20,7 +20,7 @@ export const cateList = [
   {
     id: 3,
     key: "commented",
-    title: "Có bình luận",
+    title: "Bình luận",
     href: "commented"
   },
 ];
