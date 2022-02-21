@@ -11,12 +11,12 @@ import styled from 'styled-components';
 const TAB_CONFIG = [
   {
     id: 0,
-    title: 'Lastest',
+    title: 'Mới nhất',
     keySortby: '-createdAt'
   },
   {
     id: 1,
-    title: 'Popular',
+    title: 'Phổ biến',
     keySortby: '-nViews'
   }
 ]

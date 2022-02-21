@@ -133,7 +133,7 @@ function Header() {
               <SearchIcon />
             </NavLink>
           </BoxIcon>
-          <ButtonLink href="/digital-assets">Digital Assets</ButtonLink>
+          <ButtonLink href="/digital-assets">Tài sản số</ButtonLink>
         </BoxRight>
       </BoxHeader>
       <Menu open={open} cateList={cateList}/>

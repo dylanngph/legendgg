@@ -5,7 +5,7 @@ export const navBar = [
   },
   {
     href: "#",
-    title: "Sections",
+    title: "Danh mục",
   },
   {
     href: "/partner",
