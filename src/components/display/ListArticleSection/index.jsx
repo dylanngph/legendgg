@@ -52,7 +52,7 @@ function ListArticleSection() {
           default:
             params.tagSlugs = cateList[valueCate].key;
             params.categorySlugs = '';
-            params.sortBy = '+createdAt';
+            params.sortBy = '-createdAt';
             break;
         }
         const response = await postApi.getAll(params);

@@ -3,7 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
-import ListRelated from 'components/display/ListRelated';
+import ArticleCommentBox from './commentBox';
+import ListRelated from './listRelated';
 import handleViewport from 'react-in-viewport';
 import postApi from 'api/postApi';
 import { decode } from 'html-entities';
@@ -49,6 +50,8 @@ function ArticleDetail({article}) {
         <Grid container sx={{ flexDirection: { md: "row-reverse"} }}>
           <Grid item xs={12} md={8}>
             <BoxContentPost dangerouslySetInnerHTML={{__html: decode(article?.content)}} />
+            <ViewportBlock onEnterViewport={() => postnViewArticle()} />
+            {/* <ArticleCommentBox /> */}
           </Grid>
           <Grid item xs={12} md={4}>
             <BoxMoreInfo>
@@ -62,7 +65,7 @@ function ArticleDetail({article}) {
                 <Box sx={{ '& svg': {width: 16, height: 16}, marginRight: '3px' }}>
                   <LocalFireDepartmentIcon />
                 </Box>
-                <span>{article.nViews}</span>
+                <span>{article.nLikes}</span>
               </Box>
               <Box sx={{ display: 'flex', color: '#888888' }}>
                 <Box sx={{ '& svg': {width: 16, height: 16}, marginRight: '3px' }}>
@@ -81,7 +84,6 @@ function ArticleDetail({article}) {
             </BoxMoreInfo>
           </Grid>
         </Grid>
-        <ViewportBlock onEnterViewport={() => postnViewArticle()} />
         <ListRelated articleId={article._id}/>
         </>
       )}

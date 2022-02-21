@@ -36,7 +36,7 @@ function ArticleItem({viewType, article}) {
                     <Box sx={{ '& svg': {color: '#999999', width: 16, height: 16}, marginRight: '3px' }}>
                       <LocalFireDepartmentIcon />
                     </Box>
-                    <span>{article.nViews}</span>
+                    <span>{article.nLikes}</span>
                   </Box>
                   <Box sx={{ marginLeft: '15px', display: 'flex' }}>
                     <Box sx={{ '& svg': {color: '#999999', width: 16, height: 16}, marginRight: '3px' }}>
@@ -63,7 +63,7 @@ function ArticleItem({viewType, article}) {
                     <Box sx={{ '& svg': {color: '#f1555b', width: 16, height: 16}, marginRight: '3px' }}>
                       <LocalFireDepartmentIcon />
                     </Box>
-                    <span>{article.nViews}</span>
+                    <span>{article.nLikes}</span>
                   </Box>
                   <Box sx={{ marginLeft: '15px', display: 'flex' }}>
                     <Box sx={{ '& svg': {color: '#999999', width: 16, height: 16}, marginRight: '3px' }}>
