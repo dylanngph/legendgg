@@ -91,12 +91,12 @@ function Header() {
                   }>
                   <span>{nav.title}</span>
                 </NavLink>
-                {nav.title === 'Sections' && (
+                {nav.key === 'sections' && (
                   <>
                   {cateList.length > 0 && (
                     <BoxSubMenu>
                     <div>
-                      <Box sx={{ marginBottom: '10px', color: '#888888'}} >CATEGORIES</Box>
+                      {/* <Box sx={{ marginBottom: '10px', color: '#888888'}} >CATEGORIES</Box> */}
                       <Grid container spacing={2} sx={{ paddingRight: '41px' }}>
                       {cateList.map((cate, index) => (
                         <Grid item xs={6} md={3} key={index}>

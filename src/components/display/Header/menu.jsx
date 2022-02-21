@@ -22,7 +22,7 @@ function Menu({ open, cateList }) {
               }>
               <span>{nav.title}</span>
             </NavLink>
-            {nav.title === 'Sections' && (
+            {nav.key === 'sections' && (
               <>
               {cateList.length > 0 && (
                 <BoxSubMenu>
