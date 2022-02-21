@@ -4,7 +4,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import ContainerAuth from 'components/display/ContainerAuth';
 import authApi from 'api/authApi';
 import NotFound from 'components/display/NotFound';
-import useToken from 'utils/hooks/useToken';
+// import useToken from 'utils/hooks/useToken';
 import styled from 'styled-components';
 
 function useQuery() {
@@ -15,7 +15,7 @@ function useQuery() {
 function VerifyEmailScreen() {
   let query = useQuery();
   const navigate = useNavigate();
-  const { token, setToken } = useToken();
+  // const { token, setToken } = useToken();
   const [error, setError] = useState(false);
   const [successVerify, setSuccessVerify] = useState(false);
 

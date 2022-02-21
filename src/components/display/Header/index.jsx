@@ -38,6 +38,13 @@ function Header() {
       } catch (error) { }
     }
     fetchList();
+
+    // check state menu user...
+    const tk = localStorage.getItem('token');
+    if (tk && tk !== 'null') {
+      dispatch(changeStateNavUserMenu());
+    }
+    
   }, []);
 
   useEffect(() => {

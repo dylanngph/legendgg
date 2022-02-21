@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import * as constants from "./layout.constant";
 
 const initialState = {
-  stateNavUserMenu: localStorage.getItem('token') !== null,
+  stateNavUserMenu: false,
 };
 
 function layoutStore(state = initialState, action) {
