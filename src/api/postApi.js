@@ -13,6 +13,10 @@ class PostApi {
     const url = '/article/related';
     return axiosClient.get(url, { params });
   };
+  postnView = (articleId) => {
+    const url = '/article/view';
+    return axiosClient.post(url, { articleId: articleId });
+  }
 }
 
 const postApi = new PostApi();

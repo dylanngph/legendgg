@@ -4,12 +4,37 @@ import PropTypes from 'prop-types';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import ListRelated from 'components/display/ListRelated';
+import handleViewport from 'react-in-viewport';
+import postApi from 'api/postApi';
 import { decode } from 'html-entities';
 import moment from 'moment';
 import styled from 'styled-components';
 
+const BlockCheckViewArticle = (props) => {
+  const { forwardedRef } = props;
+  return (
+    <div className="viewport-block" ref={forwardedRef}>
+      <div style={{ width: '100%', height: '10px' }} />
+    </div>
+  );
+};
+
+const ViewportBlock = handleViewport(BlockCheckViewArticle, /** options: {}, config: {} **/);
 function ArticleDetail({article}) {
   const navigate = useNavigate();
+
+  const postnViewArticle = async () => {
+    // set nView article
+    let arrayListnViewed = localStorage.getItem('listnViewed');
+    if (!arrayListnViewed) arrayListnViewed = [];
+    else arrayListnViewed = JSON.parse(arrayListnViewed);
+    if (arrayListnViewed.includes(article._id)) return;
+    arrayListnViewed.push(article._id);
+    localStorage.setItem('listnViewed', JSON.stringify(arrayListnViewed));
+    try {
+      await postApi.postnView(article._id);
+    } catch (error) {}
+  }
 
   return (
     <Box sx={{padding: '25px'}}>
@@ -56,6 +81,7 @@ function ArticleDetail({article}) {
             </BoxMoreInfo>
           </Grid>
         </Grid>
+        <ViewportBlock onEnterViewport={() => postnViewArticle()} />
         <ListRelated articleId={article._id}/>
         </>
       )}
