@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
 import { navBar } from 'constants/data/navbar';
 import Burger from './burger';
@@ -17,6 +17,7 @@ const activeClassName = "active";
 
 function Header() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const stateNavUserMenu = useSelector((state) => state.layoutReducer.layoutStore.stateNavUserMenu);
   const { token, setToken } = useToken();
   const [cateList, setCateList] = useState([]);
