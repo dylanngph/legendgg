@@ -46,6 +46,7 @@ function Header() {
   const handleLogout = () => {
     setToken(null);
     dispatch(changeStateNavUserMenu());
+    navigate('/');
   }
 
   const renderMenuUser = () => {
