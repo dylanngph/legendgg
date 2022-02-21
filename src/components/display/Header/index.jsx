@@ -27,7 +27,13 @@ function Header() {
     const fetchList = async () => {
       try {
         const response = await categoryApi.getAll();
-        setCateList(response.data);
+        let cateList = response.data;
+        if (cateList) {
+          for (let cate of cateList) {
+            cate['image'] = `/images/img-cate-${Math.floor(Math.random() * 7)}.jpg`;
+          }
+        }
+        setCateList(cateList);
       } catch (error) { }
     }
     fetchList();
@@ -87,7 +93,7 @@ function Header() {
                         <Grid item xs={6} md={3} key={index}>
                           <NavLink to={`/cate/${cate.slug}`}>
                             <BoxCate>
-                              <img src={`/images/img-cate-${Math.floor(Math.random() * 7)}.jpg`} alt={cate.name} />
+                              <img src={cate.image} alt={cate.name} />
                               <span>{cate.name}</span>
                             </BoxCate>
                           </NavLink>

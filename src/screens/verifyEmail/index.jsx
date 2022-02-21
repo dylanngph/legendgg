@@ -17,6 +17,7 @@ function VerifyEmailScreen() {
   const navigate = useNavigate();
   const { token, setToken } = useToken();
   const [error, setError] = useState(false);
+  const [successVerify, setSuccessVerify] = useState(false);
 
   if (!query.get('token')) {
     navigate('/');
@@ -24,6 +25,7 @@ function VerifyEmailScreen() {
 
   useEffect(() => {
     setError(false);
+
     const verifyEmail = async () => {
       try {
         const params = {
@@ -31,8 +33,9 @@ function VerifyEmailScreen() {
         };
         const response = await authApi.verifyEmail(params);
         if(response.message) {
-          setToken(query.get('token'));
-          navigate('/');
+          // setToken(query.get('token'));
+          // navigate('/');
+          setSuccessVerify(true);
         }
       } catch (error) { setError(true); }
     }
@@ -47,8 +50,17 @@ function VerifyEmailScreen() {
           <WrapperEmailVerify>
             {!error ? (
               <>
-                <div>đang xác thực email</div>
-                <CircularProgress />
+              {!successVerify ? (
+                <>
+                  <div>đang xác thực email</div>
+                  <CircularProgress />
+                </>
+              ) : (
+                <>
+                  <div>Xác thực email thành công</div>
+                  <NavLink to="/login">Đăng nhập ngay</NavLink>
+                </>
+              )}
               </>
             ) : (
               <>
