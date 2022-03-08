@@ -20,8 +20,9 @@ const BoxThubArticle = styled(Box)`
   }
   img {
     cursor: pointer;
-    max-width: 100%;
+    width: 100%;
     height: 100%;
+    object-fit: cover;
   }
   @media screen and (max-width: 600px) {
     height: ${(props) => props.viewType ? SIZE_HEIGHT_VIEW_TYPE[props.viewType] : "250"}px;

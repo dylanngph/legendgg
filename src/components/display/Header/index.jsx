@@ -29,11 +29,6 @@ function Header() {
       try {
         const response = await categoryApi.getAll();
         let cateList = response.data;
-        if (cateList) {
-          for (let cate of cateList) {
-            cate['image'] = `/images/img-cate-${Math.floor(Math.random() * 7)}.jpg`;
-          }
-        }
         setCateList(cateList);
       } catch (error) { }
     }
